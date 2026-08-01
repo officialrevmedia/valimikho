@@ -1,43 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
-    <loc>https://valimikho.com/</loc>
+    <loc>https://www.valimikho.com/</loc>
+    <lastmod>2026-08-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>https://valimikho.com/#listings</loc>
-    <changefreq>daily</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://valimikho.com/#neighbourhoods</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://valimikho.com/#sell</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://valimikho.com/#buy</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://valimikho.com/#invest</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://valimikho.com/#about</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://valimikho.com/#contact</loc>
-    <changefreq>yearly</changefreq>
-    <priority>0.5</priority>
+    <image:image>
+      <image:loc>https://www.valimikho.com/og-cover.jpg</image:loc>
+      <image:title>Vali Mikho Real Estate, Hamilton and Burlington</image:title>
+      <image:caption>Buy, sell, and invest across Hamilton, Burlington, and the GTA.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.valimikho.com/assets/vali-mikho-headshot.jpg</image:loc>
+      <image:title>Vali Mikho, REALTOR, HomeLife Professionals Realty Inc.</image:title>
+    </image:image>
   </url>
 </urlset>

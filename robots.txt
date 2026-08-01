@@ -1,4 +1,19 @@
+# valimikho.com
 User-agent: *
 Allow: /
 
-Sitemap: https://valimikho.com/sitemap.xml
+# Block nothing. Everything here is public marketing content.
+# IDX listing content is rendered client-side by myRealPage and is
+# governed separately by the ITSO MLS® System rules.
+
+# Common AI crawlers are allowed. Remove or adjust if Vali prefers otherwise.
+User-agent: GPTBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+Sitemap: https://www.valimikho.com/sitemap.xml
