@@ -56,11 +56,27 @@ Three widgets are embedded:
 
 | Widget ID | Section | Purpose |
 |---|---|---|
-| `129898` | `#listings` | Primary featured listings grid |
-| `129899` | `#listings` | Secondary listings block |
-| `129900` | `#search` | Full for-sale MLS® search |
+| `129898` | `#listings` | Vali's Listings |
+| `129899` | `#listings` | Office Listings (HomeLife office active) |
+| `129932` | `#search` | For Sale Search (full search with filters) |
 
 Each sits inside a `.mrp-shell` wrapper providing the card styling, gold top rule, and a loading placeholder that clears via `MutationObserver` once the widget paints. A nine-second timeout ensures a spinner can never hang.
+
+The two blocks in `#listings` each carry an `<h3 class="mrp-group-h">` heading so a visitor can tell Vali's own listings from the wider office inventory.
+
+**Widget `129900` is retired.** It was the original showcase embedded in `#search`, which displayed a fixed set of listings with no search controls. It was replaced by `129932` on 31 August 2026. Nothing in the codebase references `129900` any more.
+
+### If a widget ID ever changes
+
+Three places must agree, or the loading spinner will hang for nine seconds and then clear on the timeout:
+
+1. The shell `id` attribute, `id="mrp-XXXXXX"`
+2. The `data-for` attribute on the inner `.mrp-loading` div
+3. The script `src` and its `id="mrp-showcase-script-XXXXXX"`
+
+Then add or update the ID in the `shells` array in the loading-state script near the bottom of `index.html`.
+
+The quick-search bar under the hero scrolls the visitor to `#search`, where widget `129932` provides the real filters.
 
 ### Changing what a widget displays
 
@@ -88,22 +104,51 @@ MRP injects its own markup. The `MYREALPAGE IDX WIDGET SKIN` CSS block overrides
 
 ## Recently Sold section
 
-Eight real closings, carried over from the previous Wix site:
+Fifteen closings. Seven added 31 August 2026 from Vali's OneHome listing sheets, eight carried over from the previous Wix site.
 
-| Property | City | Result |
+### 2026 closings (added 31 Aug 2026)
+
+Prices confirmed 31 Aug 2026 from the OneHome "solds for website" and "some of the solds" browse exports.
+
+| Property | City | Result | Price | Listed | Specs | MLS® |
+|---|---|---|---|---|---|---|
+| 80 Summerberry Way | Hamilton | Sold | $790,000 | $809,990 | 3 bed, 3 bath, 1,587 sq ft semi | 40833544 |
+| 177 Whittington Drive | Ancaster | Rented | $4,600/mo | $4,600 | 4 bed, 5 bath, 3,451 sq ft detached | 40846668 |
+| 360 Conklin Road, Unit E4 | Brantford | Leased | $35.00/sq ft | $35.00 | 1,000 sq ft retail / commercial | 40839263 |
+| 1100 South Service Road, Unit 424 | Stoney Creek | Sold | $660,000 | $749,000 | 2,189 sq ft office condominium | 40794021 |
+| 575 Conklin Road, Unit 602 | Brantford | Rented | $2,100/mo | $2,150 | 2 bed, 2 bath, 800 sq ft condo | 40813800 |
+| 11 Honey Comb Trail | Welland | Sold | $625,000 | $697,990 | 4 bed, 3 bath, 2,383 sq ft detached | 40774926 |
+| 6109 Chippewa Road East | Mount Hope | Sold | $1,600,000 | $1,900,000 | 3 bed, 2 bath, 2,000 sq ft on 74 acres | 40765351 |
+
+Photos for all seven are local files in `photos/`, cropped to 3:2 and optimized. No Wix dependency.
+
+Lease and per-square-foot figures use `class="price small"` so the type does not overflow, matching the two carried-over lease cards.
+
+### Further closings available but not yet added
+
+The OneHome browse exports list roughly 22 further closed transactions from 2025 and 2026 that are not yet on the site, including sales in Hamilton, Stoney Creek, Ancaster, Cambridge, Hagersville, and Brantford, and a large block of rentals at 575 Conklin Road and 305 Garner Road West. Addresses, prices, specs, and MLS® numbers are all in the exports; **photography is the only missing piece**, since the browse export does not carry usable images.
+
+Two entries in the exports are **Pending, not closed**, and must not be added to a sold display until they firm up and close:
+
+- 75 Ridge Road, Stoney Creek, $3,625,000
+- 1270 1 Side Road, Burlington, $2,900,000
+
+
+### Seal types
+
+Three seal variants are available on `.sold-seal`:
+
+| Markup | Renders | Used for |
 |---|---|---|
-| 12 Solomon Crescent | Hamilton | $890,000 |
-| 2 Trenholme Crescent | Hamilton | $861,777 |
-| 541 East 16th Street | Hamilton | $856,000 |
-| 75 Anna Capri Drive | Hamilton | $678,000 |
-| 754 Upper Wellington | Hamilton | $545,000 |
-| 401 Shellard Lane #808 | Brantford | $500,000 |
-| 202 Fair Street | Hamilton | $4,500/month leased |
-| 2200 Rymal Road E #8 | Stoney Creek | $20.00/sq ft net lease |
+| `class="sold-seal"` | Gold **Sold** | Sales |
+| `class="sold-seal lease"` | Navy **Leased** | Commercial leases |
+| `class="sold-seal rented"` | Green **Rented** | Residential leases |
 
-### The photos are still on Wix
+Residential leases in the 2026 batch use **Rented**; the commercial lease uses **Leased**. The two carried-over Wix leases (202 Fair Street, 2200 Rymal Road E) still use **Leased**. Switch 202 Fair Street to `rented` if the residential distinction should apply throughout.
 
-These images point at `static.wixstatic.com` and **will stop resolving when the Wix subscription lapses.** Every one carries an `onerror` fallback to `assets/photo-placeholder.jpg`, so the layout degrades gracefully rather than showing broken-image icons. It still needs fixing properly.
+### The Wix photos on the earlier eight
+
+Eight earlier closings still point at `static.wixstatic.com` and **will stop resolving when the Wix subscription lapses.** Every one carries an `onerror` fallback to `assets/photo-placeholder.jpg`, so the layout degrades gracefully rather than showing broken-image icons. It still needs fixing properly.
 
 **Before cancelling Wix:**
 
@@ -114,7 +159,7 @@ These images point at `static.wixstatic.com` and **will stop resolving when the 
 
 ### Adding a sold property
 
-Copy an `<article class="sold-card reveal">` block and edit address, city, price, and image. Use `class="sold-seal lease"` instead of `class="sold-seal"` for leases, and `class="price small"` for lease figures so the type does not overflow.
+Copy an `<article class="sold-card reveal">` block and edit address, city, specs, price, and image. The optional `<div class="specs">` line carries beds, baths, and size.
 
 ---
 
@@ -199,13 +244,14 @@ SSL provisions automatically. Allow up to a few hours for propagation. Keep Wix 
 
 ## Still to do before launch
 
-1. **Re-host the sold photos** off Wix. Highest priority.
-2. **Configure Formspree** and remove the `REPLACE_WITH_FORM_ID` placeholder.
-3. **Replace Unsplash stock photography** (29 images) in the hero, listings backgrounds, neighbourhood cards, and blog with Vali's real photography.
-4. **Instagram grid** is placeholder tiles. Connect a feed widget or drop in real post images.
-5. **Blog section** has placeholder articles. Write real posts or hide the section until there is content.
-6. **Social links** in the footer point at generic profiles. Swap in Vali's real URLs.
-7. **Confirm the Elite Developments logo** belongs on the site. It sits in the credentials row beside HomeLife.
+1. **Re-host the eight earlier sold photos** off Wix. Highest priority.
+2. **Optionally add the ~22 further closings** listed in the OneHome exports. Needs photography; all other data is available. See "Further closings available but not yet added" above.
+3. **Configure Formspree** and remove the `REPLACE_WITH_FORM_ID` placeholder.
+4. **Replace Unsplash stock photography** (29 images) in the hero, listings backgrounds, neighbourhood cards, and blog with Vali's real photography.
+5. **Instagram grid** is placeholder tiles. Connect a feed widget or drop in real post images.
+6. **Blog section** has placeholder articles. Write real posts or hide the section until there is content.
+7. **Social links** in the footer point at generic profiles. Swap in Vali's real URLs.
+8. **Confirm the Elite Developments logo** belongs on the site. It sits in the credentials row beside HomeLife.
 
 ---
 

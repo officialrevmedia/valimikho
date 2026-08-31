@@ -120,6 +120,7 @@
         "name": "Real Estate Services",
         "itemListElement": [
           { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Residential Home Sales" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Commercial Sales & Leasing" } },
           { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Buyer Representation" } },
           { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Free Home Evaluation" } },
           { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Pre-Construction Investment" } },
@@ -707,6 +708,8 @@ p{margin:0 0 14px}
 }
 .journey-pills button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
 .journey-pills button:hover:not(.on){border-color:var(--gold);color:var(--ink)}
+.journey-track{transition:opacity .18s ease}
+.journey-track.swapping{opacity:0}
 
 .journey-track{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-bottom:50px}
 .j-step{
@@ -947,6 +950,16 @@ p{margin:0 0 14px}
 /* ============== MYREALPAGE IDX WIDGET SKIN ============== */
 /* The MRP widgets inject their own markup. These rules bring their
    typography, colour, and radii in line with the rest of the page. */
+/* Group heading above an MRP widget (Vali's Listings / Office Listings) */
+.mrp-group-h{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(24px,2.4vw,32px);font-weight:500;
+  color:var(--ink);margin:0 0 16px;letter-spacing:-.01em;
+}
+.mrp-group-h::after{
+  content:"";display:block;width:44px;height:2px;
+  background:var(--gold);margin-top:12px;
+}
 .mrp-shell{
   background:var(--surface);
   border:1px solid var(--line);
@@ -1092,6 +1105,12 @@ p{margin:0 0 14px}
   box-shadow:0 4px 14px rgba(15,39,64,.34);
 }
 .sold-seal.lease{background:var(--ink-2);box-shadow:0 4px 14px rgba(0,0,0,.3)}
+.sold-seal.rented{background:#2f5d50;box-shadow:0 4px 14px rgba(0,0,0,.3)}
+/* Beds / baths / size line */
+.sold-card .specs{
+  font-size:11.5px;letter-spacing:.05em;
+  color:rgba(255,255,255,.62);font-weight:500;
+}
 .sold-card .body{
   padding:20px 20px 22px;
   display:flex;flex-direction:column;gap:6px;flex:1;
@@ -1297,7 +1316,7 @@ body.mnav-lock{overflow:hidden}
 }
 </style>
 </head>
-<body>
+<body id="top">
 
 <!-- ============== TOP STRIP ============== -->
 <div class="topstrip">
@@ -1316,7 +1335,7 @@ body.mnav-lock{overflow:hidden}
 <!-- ============== NAV ============== -->
 <nav class="nav" id="topnav">
   <div class="wrap nav-inner">
-    <a href="#contact" class="brand">
+    <a href="#top" class="brand" aria-label="Back to top">
       <img src="assets/vm-logo-navy.png" alt="Vali Mikho Real Estate" decoding="async">
     </a>
     <nav class="nav-links" aria-label="Primary">
@@ -1479,20 +1498,22 @@ body.mnav-lock{overflow:hidden}
       available across Hamilton, Burlington, and the surrounding Golden Horseshoe.
     </p>
 
-    <!-- MRP Showcase 129898 -->
+    <!-- MRP Showcase 129898 — Vali's own listings -->
+    <h3 class="mrp-group-h reveal">Vali's Listings</h3>
     <div class="mrp-shell reveal" id="mrp-129898">
       <div class="mrp-loading" data-for="mrp-129898">
         <div class="ring" aria-hidden="true"></div>
-        <div class="txt">Loading current listings</div>
+        <div class="txt">Loading Vali's listings</div>
       </div>
       <script src="https://idx.myrealpage.com/wps/rest/67205/l/showcase/v2/129898/in.js" async id="mrp-showcase-script-129898"></script>
     </div>
 
-    <!-- MRP Showcase 129899 -->
-    <div class="mrp-shell reveal" id="mrp-129899" style="margin-top:26px">
+    <!-- MRP Showcase 129899 — HomeLife office active listings -->
+    <h3 class="mrp-group-h reveal" style="margin-top:44px">Office Listings</h3>
+    <div class="mrp-shell reveal" id="mrp-129899">
       <div class="mrp-loading" data-for="mrp-129899">
         <div class="ring" aria-hidden="true"></div>
-        <div class="txt">Loading additional listings</div>
+        <div class="txt">Loading office listings</div>
       </div>
       <script src="https://idx.myrealpage.com/wps/rest/67205/l/showcase/v2/129899/in.js" async id="mrp-showcase-script-129899"></script>
     </div>
@@ -1524,13 +1545,13 @@ body.mnav-lock{overflow:hidden}
       <p>Search active properties across Hamilton, Burlington, Ancaster, Stoney Creek, Grimsby, Oakville, and the wider GTA. Filter by price, bedrooms, and property type. Save a search and get new matches by email.</p>
     </div>
 
-    <!-- MRP For-Sale Search 129900 -->
-    <div class="mrp-shell reveal" id="mrp-129900">
-      <div class="mrp-loading" data-for="mrp-129900">
+    <!-- MRP For Sale Search 129932 (full search with filters) -->
+    <div class="mrp-shell reveal" id="mrp-129932">
+      <div class="mrp-loading" data-for="mrp-129932">
         <div class="ring" aria-hidden="true"></div>
         <div class="txt">Loading property search</div>
       </div>
-      <script src="https://idx.myrealpage.com/wps/rest/67205/l/showcase/v2/129900/in.js" async id="mrp-showcase-script-129900"></script>
+      <script src="https://idx.myrealpage.com/wps/rest/67205/l/showcase/v2/129932/in.js" async id="mrp-showcase-script-129932"></script>
     </div>
 
     <div class="idx-compliance" style="max-width:none">
@@ -2087,21 +2108,21 @@ body.mnav-lock{overflow:hidden}
     </div>
 
     <div class="journey-pills reveal">
-      <button class="on">First-Time Buyer</button>
-      <button>Move-Up Buyer</button>
-      <button>Investor</button>
-      <button>Pre-Construction</button>
+      <button class="on" data-journey="first">First-Time Buyer</button>
+      <button data-journey="moveup">Move-Up Buyer</button>
+      <button data-journey="investor">Investor</button>
+      <button data-journey="precon">Pre-Construction</button>
     </div>
 
-    <div class="journey-track">
-      <div class="j-step reveal"><div class="num">01</div><h4>Discovery Call</h4><p>Thirty minute conversation about what you're solving for, when, and why. No pressure. We confirm fit before paperwork.</p></div>
-      <div class="j-step reveal"><div class="num">02</div><h4>Pre-Approval</h4><p>Connect with our trusted mortgage advisors. Know your real number before you fall in love with a property.</p></div>
+    <div class="journey-track" id="journeyTrack">
+      <div class="j-step reveal"><div class="num">01</div><h4>Discovery Call</h4><p>Thirty minutes on budget, timing, and neighbourhoods. Vali explains the entire process in plain language before any paperwork.</p></div>
+      <div class="j-step reveal"><div class="num">02</div><h4>Pre-Approval &amp; Incentives</h4><p>Trusted mortgage advisors get you a real number, and Vali walks you through land transfer tax rebates and every first-time buyer program you qualify for.</p></div>
       <div class="j-step reveal"><div class="num">03</div><h4>Search Setup</h4><p>Custom MLS feed with your criteria. New listings hit your inbox within minutes of going live, not days later.</p></div>
-      <div class="j-step reveal"><div class="num">04</div><h4>Showings &amp; Tours</h4><p>Vali tours with you. Notes on every property. Honest feedback on what works and what doesn't.</p></div>
-      <div class="j-step reveal"><div class="num">05</div><h4>Offer Strategy</h4><p>Comparable sales analysis, market read, condition recommendations. Your offer is built to win, not just submitted.</p></div>
-      <div class="j-step reveal"><div class="num">06</div><h4>Negotiation</h4><p>This is where eleven years of pattern recognition pays for itself. Vali negotiates the deal you didn't know was possible.</p></div>
-      <div class="j-step reveal"><div class="num">07</div><h4>Inspection &amp; Conditions</h4><p>Vetted home inspector, lawyer, insurer. We project-manage the due diligence so you can focus on financing.</p></div>
-      <div class="j-step reveal"><div class="num">08</div><h4>Closing &amp; Beyond</h4><p>Keys delivered. Moving checklist sent. Vali stays in your corner long after the transaction closes.</p></div>
+      <div class="j-step reveal"><div class="num">04</div><h4>Showings &amp; Tours</h4><p>Vali tours with you and teaches you what to look for: mechanicals, layout, and resale value, not just paint and staging.</p></div>
+      <div class="j-step reveal"><div class="num">05</div><h4>Offer Strategy</h4><p>Comparable sales analysis and conditions that protect a first purchase, like financing and inspection. You never overpay out of fear.</p></div>
+      <div class="j-step reveal"><div class="num">06</div><h4>Negotiation</h4><p>Your first negotiation is Vali's five hundredth. He handles the pressure tactics so you never bid blind.</p></div>
+      <div class="j-step reveal"><div class="num">07</div><h4>Inspection &amp; Conditions</h4><p>Vetted home inspector, lawyer, insurer. Deposits, closing costs, and timelines explained step by step, nothing assumed.</p></div>
+      <div class="j-step reveal"><div class="num">08</div><h4>Closing &amp; Beyond</h4><p>Keys delivered, moving checklist sent, and first-year check-ins. Vali stays in your corner long after your first closing.</p></div>
     </div>
 
     <div style="text-align:center">
@@ -2186,22 +2207,22 @@ body.mnav-lock{overflow:hidden}
           <div class="invest-pillar">
             <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V7l8-4 8 4v14"/><path d="M9 9v12M15 9v12"/></svg></div>
             <h4>Pre-Construction</h4>
-            <p>Curated project shortlist. Builder relationships. Deposit structures explained.</p>
+            <p>For investors who want tomorrow's inventory at today's pricing. Curated project shortlists, vetted builder track records, and deposit structures and assignment rights explained before you commit a dollar.</p>
           </div>
           <div class="invest-pillar">
             <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
             <h4>Cash-Flow Rentals</h4>
-            <p>Hamilton zip codes with a real path to positive monthly returns, modeled honestly.</p>
+            <p>For income-first investors who care about the monthly number. Hamilton-area pockets with a real path to positive cash flow, with rents, taxes, and carrying costs modelled honestly before you offer.</p>
           </div>
           <div class="invest-pillar">
             <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h18v18H3z"/><path d="M9 9h6v6H9z"/></svg></div>
             <h4>Multi-Unit</h4>
-            <p>Duplexes, triplexes, secondary suites. Tenant law, financing, and exit strategy.</p>
+            <p>For investors ready to scale past a single door. Duplexes, triplexes, and secondary suites, with guidance on tenant law, financing thresholds, and value-add conversions that lift rents legally.</p>
           </div>
           <div class="invest-pillar">
             <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 17 9 11 13 15 21 7"/><polyline points="14 7 21 7 21 14"/></svg></div>
             <h4>Portfolio Strategy</h4>
-            <p>Long-horizon planning across appreciation, leverage, refinancing, and tax efficiency.</p>
+            <p>For long-horizon investors building lasting wealth. Planning across appreciation, leverage, refinancing, and tax efficiency, so each property positions you for the next one.</p>
           </div>
         </div>
         <div style="margin-top:34px;display:flex;gap:14px;flex-wrap:wrap">
@@ -2231,9 +2252,10 @@ body.mnav-lock{overflow:hidden}
     </div>
 
     <p class="lede reveal" style="max-width:72ch">
-      Eleven years of transactions across Hamilton, Burlington, Stoney Creek, and beyond. Below is a
-      selection of recent closings, residential sales and commercial leases alike, each one negotiated,
-      marketed, and closed personally.
+      Eleven years of transactions across Hamilton, Ancaster, Stoney Creek, Burlington, Brantford,
+      Mount Hope, Welland, and beyond. Below is a selection of recent closings, residential sales,
+      commercial and office space, farmland, and leases alike, each one negotiated, marketed, and
+      closed personally.
     </p>
 
     <!-- Ledger band -->
@@ -2257,6 +2279,122 @@ body.mnav-lock{overflow:hidden}
     </div>
 
     <div class="sold-grid">
+
+      <!-- ===== 2026 CLOSINGS (added 31 Aug 2026, newest first) ===== -->
+
+      <article class="sold-card reveal">
+        <div class="img">
+          <span class="sold-seal">Sold</span>
+          <img src="photos/80-summerberry-way-hamilton.jpg" alt="80 Summerberry Way, Hamilton, sold by Vali Mikho" loading="lazy" decoding="async" width="600" height="400" onerror="this.onerror=null;this.src='assets/photo-placeholder.jpg';">
+        </div>
+        <div class="body">
+          <h3 class="addr">80 SUMMERBERRY Way</h3>
+          <div class="city">Hamilton, Ontario</div>
+          <div class="specs">3 bed &middot; 3 bath &middot; 1,587 sq ft &middot; Semi-detached</div>
+          <div class="price-row">
+            <div class="price">$790,000</div>
+            <div class="plab">Sold &middot; Aug 2026</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="sold-card reveal">
+        <div class="img">
+          <span class="sold-seal rented">Rented</span>
+          <img src="photos/177-whittington-drive-ancaster.jpg" alt="177 Whittington Drive, Ancaster, leased by Vali Mikho" loading="lazy" decoding="async" width="600" height="400" onerror="this.onerror=null;this.src='assets/photo-placeholder.jpg';">
+        </div>
+        <div class="body">
+          <h3 class="addr">177 WHITTINGTON Drive</h3>
+          <div class="city">Ancaster, Ontario</div>
+          <div class="specs">4 bed &middot; 5 bath &middot; 3,451 sq ft &middot; Detached</div>
+          <div class="price-row">
+            <div class="price small">$4,600</div>
+            <div class="plab">Per Month &middot; Jul 2026</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="sold-card reveal">
+        <div class="img">
+          <span class="sold-seal lease">Leased</span>
+          <img src="photos/360-conklin-road-e4-brantford.jpg" alt="360 Conklin Road Unit E4, Brantford, commercial space leased by Vali Mikho" loading="lazy" decoding="async" width="600" height="400" onerror="this.onerror=null;this.src='assets/photo-placeholder.jpg';">
+        </div>
+        <div class="body">
+          <h3 class="addr">360 CONKLIN Road, Unit E4</h3>
+          <div class="city">Brantford, Ontario</div>
+          <div class="specs">1,000 sq ft &middot; Retail &amp; commercial</div>
+          <div class="price-row">
+            <div class="price small">$35.00</div>
+            <div class="plab">Per Sq Ft &middot; Jul 2026</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="sold-card reveal">
+        <div class="img">
+          <span class="sold-seal">Sold</span>
+          <img src="photos/1100-south-service-424-stoney-creek.jpg" alt="1100 South Service Road Unit 424, Stoney Creek, office condominium sold by Vali Mikho" loading="lazy" decoding="async" width="600" height="400" onerror="this.onerror=null;this.src='assets/photo-placeholder.jpg';">
+        </div>
+        <div class="body">
+          <h3 class="addr">1100 SOUTH SERVICE Road, Unit 424</h3>
+          <div class="city">Stoney Creek, Ontario</div>
+          <div class="specs">2,189 sq ft &middot; Office condominium</div>
+          <div class="price-row">
+            <div class="price">$660,000</div>
+            <div class="plab">Sold &middot; Jun 2026</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="sold-card reveal">
+        <div class="img">
+          <span class="sold-seal rented">Rented</span>
+          <img src="photos/575-conklin-road-602-brantford.jpg" alt="575 Conklin Road Unit 602, Brantford, condominium leased by Vali Mikho" loading="lazy" decoding="async" width="600" height="400" onerror="this.onerror=null;this.src='assets/photo-placeholder.jpg';">
+        </div>
+        <div class="body">
+          <h3 class="addr">575 CONKLIN Road, Unit 602</h3>
+          <div class="city">Brantford, Ontario</div>
+          <div class="specs">2 bed &middot; 2 bath &middot; 800 sq ft &middot; Condominium</div>
+          <div class="price-row">
+            <div class="price small">$2,100</div>
+            <div class="plab">Per Month &middot; Jun 2026</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="sold-card reveal">
+        <div class="img">
+          <span class="sold-seal">Sold</span>
+          <img src="photos/11-honey-comb-trail-welland.jpg" alt="11 Honey Comb Trail, Welland, sold by Vali Mikho" loading="lazy" decoding="async" width="600" height="400" onerror="this.onerror=null;this.src='assets/photo-placeholder.jpg';">
+        </div>
+        <div class="body">
+          <h3 class="addr">11 HONEY COMB Trail</h3>
+          <div class="city">Welland, Ontario</div>
+          <div class="specs">4 bed &middot; 3 bath &middot; 2,383 sq ft &middot; Detached</div>
+          <div class="price-row">
+            <div class="price">$625,000</div>
+            <div class="plab">Sold &middot; Apr 2026</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="sold-card reveal">
+        <div class="img">
+          <span class="sold-seal">Sold</span>
+          <img src="photos/6109-chippewa-road-e-mount-hope.jpg" alt="6109 Chippewa Road East, Mount Hope, 74-acre farm sold by Vali Mikho" loading="lazy" decoding="async" width="600" height="400" onerror="this.onerror=null;this.src='assets/photo-placeholder.jpg';">
+        </div>
+        <div class="body">
+          <h3 class="addr">6109 CHIPPEWA Road East</h3>
+          <div class="city">Mount Hope, Ontario</div>
+          <div class="specs">3 bed &middot; 2 bath &middot; 2,000 sq ft &middot; 74 acres, farm</div>
+          <div class="price-row">
+            <div class="price">$1,600,000</div>
+            <div class="plab">Sold &middot; Feb 2026</div>
+          </div>
+        </div>
+      </article>
+
+      <!-- ============ EARLIER CLOSINGS ============ -->
       <article class="sold-card reveal">
         <div class="img">
           <span class="sold-seal">Sold</span>
@@ -2575,7 +2713,7 @@ body.mnav-lock{overflow:hidden}
       <div class="av-content reveal">
         <span class="eyebrow" style="color:var(--gold-bright)">No.11 · About Vali</span>
         <h2>Eleven years. <em>Five hundred families.</em> One standard.</h2>
-        <p class="lede">Vali Mikho began his real estate career in 2015 with a simple conviction: the homes people sell and buy are not transactions to him, they are inflection points in their lives. Since then, he has closed more than three hundred million dollars in residential and pre-construction sales across the Hamilton, Burlington, and GTA corridor.</p>
+        <p class="lede">Vali Mikho began his real estate career in 2015 with a simple conviction: the properties people sell and buy are not transactions to him, they are inflection points in their lives. Since then, he has closed more than three hundred million dollars in residential, commercial, and pre-construction sales across the Hamilton, Burlington, and GTA corridor. That standard holds whether the file is a first home, an income property, or a commercial lease.</p>
         <p class="lede">He works with his clients the way a private banker works with theirs. Slowly when it should be slow. Decisively when it has to be. Always with the math, always with the homework, always in their corner.</p>
         <p class="signature">Vali Mikho</p>
         <p class="who">Realtor · HomeLife Power Brokerage · Burlington</p>
@@ -2758,7 +2896,7 @@ const io=new IntersectionObserver((es)=>{
 },{threshold:0.12,rootMargin:'0px 0px -80px 0px'});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
-// Filter pills (visual only)
+// Filter pills (class toggle)
 document.querySelectorAll('.listing-filters button, .journey-pills button').forEach(b=>{
   b.addEventListener('click',()=>{
     const sib=b.parentElement.querySelectorAll('button');
@@ -2766,6 +2904,75 @@ document.querySelectorAll('.listing-filters button, .journey-pills button').forE
     b.classList.add('on');
   });
 });
+
+// ============== BUYER JOURNEY CONTENT PER TYPE ==============
+// Each buyer type gets its own eight steps. Edit copy here.
+(function(){
+  var track=document.getElementById('journeyTrack');
+  if(!track) return;
+  var steps=track.querySelectorAll('.j-step');
+
+  var JOURNEYS={
+    first:[
+      {t:'Discovery Call',d:'Thirty minutes on budget, timing, and neighbourhoods. Vali explains the entire process in plain language before any paperwork.'},
+      {t:'Pre-Approval & Incentives',d:'Trusted mortgage advisors get you a real number, and Vali walks you through land transfer tax rebates and every first-time buyer program you qualify for.'},
+      {t:'Search Setup',d:'Custom MLS feed with your criteria. New listings hit your inbox within minutes of going live, not days later.'},
+      {t:'Showings & Tours',d:'Vali tours with you and teaches you what to look for: mechanicals, layout, and resale value, not just paint and staging.'},
+      {t:'Offer Strategy',d:'Comparable sales analysis and conditions that protect a first purchase, like financing and inspection. You never overpay out of fear.'},
+      {t:'Negotiation',d:'Your first negotiation is Vali\'s five hundredth. He handles the pressure tactics so you never bid blind.'},
+      {t:'Inspection & Conditions',d:'Vetted home inspector, lawyer, insurer. Deposits, closing costs, and timelines explained step by step, nothing assumed.'},
+      {t:'Closing & Beyond',d:'Keys delivered, moving checklist sent, and first-year check-ins. Vali stays in your corner long after your first closing.'}
+    ],
+    moveup:[
+      {t:'Strategy Session',d:'Sell first or buy first. Vali maps your equity position, timing risk, and bridge financing options before anything hits the market.'},
+      {t:'Equity & Financing',d:'A real evaluation of your current home, then the mortgage math: porting versus new financing, and what your true buying power is.'},
+      {t:'Coordinated Search',d:'Your next home search runs while your current home is prepped for market, so neither side of the move waits on the other.'},
+      {t:'Sharper Showings',d:'You have owned a home and know the basics. Tours focus on what the next decade needs: space, schools, commute, and resale.'},
+      {t:'Offer & Timing',d:'Offers structured around your sale, closing dates aligned, and conditions that protect both transactions at once.'},
+      {t:'Negotiating Two Deals',d:'Maximizing the sale price on one side while holding the line on the purchase. Vali runs both files so they never work against each other.'},
+      {t:'Dual Due Diligence',d:'Inspections, lawyers, and financing on two transactions, project-managed on one calendar.'},
+      {t:'One Moving Day',d:'Both closings sequenced so you move once, not twice, and never carry two mortgages longer than planned.'}
+    ],
+    investor:[
+      {t:'Investor Intake',d:'Cash flow or appreciation, one door or five. We define the goal, the capital, and the timeline before looking at a single listing.'},
+      {t:'Financing Structure',d:'Rental financing rules, down payment requirements, and how lenders treat rental income, mapped out with investor-savvy mortgage advisors.'},
+      {t:'Deal Flow',d:'An MLS feed tuned to investor metrics, plus off-market opportunities surfaced through eleven years of local relationships.'},
+      {t:'Running the Numbers',d:'Cap rate, cash-on-cash return, and realistic rents and expenses on every candidate. When the math does not work, Vali says so.'},
+      {t:'Offer Strategy',d:'Offers negotiated on the numbers, with conditions built around financing and due diligence rather than emotion.'},
+      {t:'Due Diligence',d:'Building condition, tenant and lease review where applicable, plus zoning and bylaw checks before anything firms up.'},
+      {t:'Closing & Setup',d:'Lawyer, insurance, and property management referrals so the asset is tenant-ready from day one.'},
+      {t:'Portfolio Review',d:'An annual check-in on every property: refinance, hold, or trade up. The plan does not end at closing.'}
+    ],
+    precon:[
+      {t:'Project Shortlist',d:'Not every launch deserves your deposit. Vali shortlists projects by builder track record, location fundamentals, and pricing versus resale.'},
+      {t:'The Math First',d:'Deposit structure, projected closing costs, development charges, and assignment rules, all on paper before the model suite visit.'},
+      {t:'Platinum Access',d:'Builder relationships mean earlier allocations and better unit selection, often before the public launch.'},
+      {t:'Unit Selection',d:'Floor plan, level, and exposure chosen with future resale and rentability in mind, not just the view.'},
+      {t:'Worksheet & Incentives',d:'Your worksheet submitted and incentives negotiated: capped levies, assignment rights, and leasing permission during occupancy.'},
+      {t:'The 10-Day Review',d:'Ontario\'s cooling-off period, used properly. A real estate lawyer reviews the purchase agreement before you are locked in.'},
+      {t:'Interim Occupancy',d:'Occupancy fees explained, leasing during occupancy handled if permitted, and final closing costs prepared well ahead.'},
+      {t:'Final Closing & Exit',d:'Close and hold, lease it out, or assign. The exit strategy is set against the market at completion, not guessed at signing.'}
+    ]
+  };
+
+  document.querySelectorAll('.journey-pills button').forEach(function(b){
+    b.addEventListener('click',function(){
+      var set=JOURNEYS[b.getAttribute('data-journey')];
+      if(!set) return;
+      track.classList.add('swapping');
+      setTimeout(function(){
+        steps.forEach(function(el,i){
+          if(!set[i]) return;
+          var h=el.querySelector('h4'), p=el.querySelector('p');
+          if(h) h.textContent=set[i].t;
+          if(p) p.textContent=set[i].d;
+          el.classList.add('in');
+        });
+        track.classList.remove('swapping');
+      },180);
+    });
+  });
+})();
 
 // Mobile menu (basic)
 document.querySelector('.menu-btn')?.addEventListener('click',()=>{
@@ -2827,7 +3034,7 @@ document.querySelector('.menu-btn')?.addEventListener('click',()=>{
   // MRP injects markup asynchronously. Watch each shell and drop the
   // placeholder once real content lands (or after a timeout as a fallback).
   (function () {
-    var shells = ['mrp-129898', 'mrp-129899', 'mrp-129900'];
+    var shells = ['mrp-129898', 'mrp-129899', 'mrp-129932'];
 
     shells.forEach(function (id) {
       var shell = document.getElementById(id);
