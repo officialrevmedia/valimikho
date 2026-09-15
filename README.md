@@ -1,6 +1,6 @@
 # Vali Mikho Real Estate — valimikho.com
 
-Production source for the Vali Mikho Real Estate website. Static build, hosted on Vercel, with live MLS® listings supplied by myRealPage under Vali's ITSO agreement.
+Production source for the Vali Mikho Real Estate website. Static single-page build, hosted on Vercel, with live MLS® listings supplied by myRealPage under Vali's ITSO agreement.
 
 Built and maintained by **revmedia** (BrandRev Media & Designs Inc.).
 
@@ -11,7 +11,7 @@ Built and maintained by **revmedia** (BrandRev Media & Designs Inc.).
 ```bash
 git init
 git add .
-git commit -m "Vali Mikho website"
+git commit -m "Vali Mikho website, city listings build"
 git remote add origin git@github.com:officialrevmedia/valimikho-website.git
 git push -u origin main
 ```
@@ -37,118 +37,79 @@ valimikho-website/
 │   ├── homelife-logo.png           Brokerage mark
 │   ├── elite-developments.png      Affiliate mark
 │   └── photo-placeholder.jpg       Branded fallback for missing images
-├── photos/                         Property and lifestyle photography
+├── photos/                         Sold property photography
 ├── .gitignore
 └── README.md
 ```
 
-`index.html` is 148 KB. All images are real files rather than base64 blobs, so they cache independently and the HTML stays small.
-
 ---
 
-## The myRealPage integration
+## The listings system
 
-### How it works
+### Two separate things
 
-Vali's ITSO ATP agreement (signed 31 January 2025, finalized 4 February 2025) authorizes myRealPage to pull listing content on his behalf. Both `valimikho.com` and `valimikho.ca` are approved display domains on the agreement. The authorized feeds are **IDX** and **Office Active Listings**, both zero-fee. VOW was not purchased.
+**Vali's own listings** sit in the `#listings` section near the top of the page. Two widgets, both loaded on page view:
 
-Three widgets are embedded:
+| Widget ID | Shows |
+|---|---|
+| `129898` | Vali's own active listings |
+| `129899` | HomeLife Professionals Realty office listings |
 
-| Widget ID | Section | Purpose |
-|---|---|---|
-| `129898` | `#listings` | Vali's Listings |
-| `129899` | `#listings` | Office Listings (HomeLife office active) |
-| `129932` | `#search` | For Sale Search (full search with filters) |
+**Browse by city** sits in the `#search` section. Nine widgets, one per city, each behind a tab:
 
-Each sits inside a `.mrp-shell` wrapper providing the card styling, gold top rule, and a loading placeholder that clears via `MutationObserver` once the widget paints. A nine-second timeout ensures a spinner can never hang.
+| City | Widget ID |
+|---|---|
+| Hamilton | `129949` |
+| Ancaster | `129950` |
+| Burlington | `129951` |
+| Oakville | `129952` |
+| Mississauga | `129953` |
+| Guelph | `129954` |
+| Milton | `129955` |
+| Toronto | `129956` |
+| Niagara | `129957` |
 
-The two blocks in `#listings` each carry an `<h3 class="mrp-group-h">` heading so a visitor can tell Vali's own listings from the wider office inventory.
+There are no property-type, price, or bedroom filters anywhere on the site. City is the only choice a visitor makes.
 
-**Widget `129900` is retired.** It was the original showcase embedded in `#search`, which displayed a fixed set of listings with no search controls. It was replaced by `129932` on 31 August 2026. Nothing in the codebase references `129900` any more.
+### How the tabs load
 
-### If a widget ID ever changes
+Nine Mapbox widgets loading at once would be punishing on a phone, so each city's script is injected only when its tab is first opened. Hamilton loads when the search section scrolls into view; the rest load on demand and stay cached for the rest of the session.
 
-Three places must agree, or the loading spinner will hang for nine seconds and then clear on the timeout:
+The injection matters: the myRealPage script looks itself up by `id` when it executes, and falls back to `document.write` if it can't find itself, which would wipe the page. The loader sets the `id` on the script element **before** appending it, so the lookup always succeeds. Keep that ordering if you touch this code.
 
-1. The shell `id` attribute, `id="mrp-XXXXXX"`
-2. The `data-for` attribute on the inner `.mrp-loading` div
-3. The script `src` and its `id="mrp-showcase-script-XXXXXX"`
+### Adding or changing a city
 
-Then add or update the ID in the `shells` array in the loading-state script near the bottom of `index.html`.
-
-The quick-search bar under the hero scrolls the visitor to `#search`, where widget `129932` provides the real filters.
-
-### Changing what a widget displays
-
-Widget content is controlled in the **myRealPage Private Office**, not in this codebase. To change which listings appear, which cities are covered, or result counts: log in, find the widget by ID, adjust filters, save. Changes are live immediately with no deploy.
-
-### Adding a widget
+1. Build the predefined search and showcase in the myRealPage Private Office
+2. In `index.html`, find the `city-tabs` block and add a button:
 
 ```html
-<div class="mrp-shell reveal" id="mrp-XXXXXX">
-  <div class="mrp-loading" data-for="mrp-XXXXXX">
-    <div class="ring" aria-hidden="true"></div>
-    <div class="txt">Loading listings</div>
-  </div>
-  <script src="https://idx.myrealpage.com/wps/rest/67205/l/showcase/v2/XXXXXX/in.js" async id="mrp-showcase-script-XXXXXX"></script>
-</div>
+<button class="city-tab" role="tab" id="tab-SLUG" aria-controls="panel-SLUG"
+        aria-selected="false" data-city="SLUG" data-mrp="WIDGETID">City Name</button>
 ```
 
-Then add the new ID to the `shells` array in the loading-state script near the bottom of `index.html`.
+3. Add the matching panel in `city-panels`, copying an existing one and swapping the slug, name, description, and widget id
+4. Add the city to the `#qs-where` dropdown in the hero
+5. Optionally add it to the area cards under the map with `data-goto-city="SLUG"`
 
-### Styling
+The JavaScript picks up new tabs automatically. Nothing else to wire.
 
-MRP injects its own markup. The `MYREALPAGE IDX WIDGET SKIN` CSS block overrides typography, colours, and radii to match the page. If myRealPage ships a markup change and something looks off, adjust selectors there.
+### Changing what a widget shows
+
+Widget content is controlled in the **myRealPage Private Office**, not in this codebase. Adjust the predefined search filters and save. Changes are live immediately with no deploy.
+
+### The 100-listing cap
+
+ITSO MLS® Rules, Article 9.05(m), limit any single IDX inquiry to 100 current listings. This is in Vali's signed agreement and cannot be raised. Cities with more than 100 active listings will show the first hundred. Set the sort order to newest-first in myRealPage so the hundred shown are the most recent.
 
 ---
 
-## Recently Sold section
+## Recently Sold
 
-Fifteen closings. Seven added 31 August 2026 from Vali's OneHome listing sheets, eight carried over from the previous Wix site.
+Fifteen real transactions. Seven use locally-hosted photos in `photos/`. Eight still load from `static.wixstatic.com`.
 
-### 2026 closings (added 31 Aug 2026)
+### The Wix photos will break
 
-Prices confirmed 31 Aug 2026 from the OneHome "solds for website" and "some of the solds" browse exports.
-
-| Property | City | Result | Price | Listed | Specs | MLS® |
-|---|---|---|---|---|---|---|
-| 80 Summerberry Way | Hamilton | Sold | $790,000 | $809,990 | 3 bed, 3 bath, 1,587 sq ft semi | 40833544 |
-| 177 Whittington Drive | Ancaster | Rented | $4,600/mo | $4,600 | 4 bed, 5 bath, 3,451 sq ft detached | 40846668 |
-| 360 Conklin Road, Unit E4 | Brantford | Leased | $35.00/sq ft | $35.00 | 1,000 sq ft retail / commercial | 40839263 |
-| 1100 South Service Road, Unit 424 | Stoney Creek | Sold | $660,000 | $749,000 | 2,189 sq ft office condominium | 40794021 |
-| 575 Conklin Road, Unit 602 | Brantford | Rented | $2,100/mo | $2,150 | 2 bed, 2 bath, 800 sq ft condo | 40813800 |
-| 11 Honey Comb Trail | Welland | Sold | $625,000 | $697,990 | 4 bed, 3 bath, 2,383 sq ft detached | 40774926 |
-| 6109 Chippewa Road East | Mount Hope | Sold | $1,600,000 | $1,900,000 | 3 bed, 2 bath, 2,000 sq ft on 74 acres | 40765351 |
-
-Photos for all seven are local files in `photos/`, cropped to 3:2 and optimized. No Wix dependency.
-
-Lease and per-square-foot figures use `class="price small"` so the type does not overflow, matching the two carried-over lease cards.
-
-### Further closings available but not yet added
-
-The OneHome browse exports list roughly 22 further closed transactions from 2025 and 2026 that are not yet on the site, including sales in Hamilton, Stoney Creek, Ancaster, Cambridge, Hagersville, and Brantford, and a large block of rentals at 575 Conklin Road and 305 Garner Road West. Addresses, prices, specs, and MLS® numbers are all in the exports; **photography is the only missing piece**, since the browse export does not carry usable images.
-
-Two entries in the exports are **Pending, not closed**, and must not be added to a sold display until they firm up and close:
-
-- 75 Ridge Road, Stoney Creek, $3,625,000
-- 1270 1 Side Road, Burlington, $2,900,000
-
-
-### Seal types
-
-Three seal variants are available on `.sold-seal`:
-
-| Markup | Renders | Used for |
-|---|---|---|
-| `class="sold-seal"` | Gold **Sold** | Sales |
-| `class="sold-seal lease"` | Navy **Leased** | Commercial leases |
-| `class="sold-seal rented"` | Green **Rented** | Residential leases |
-
-Residential leases in the 2026 batch use **Rented**; the commercial lease uses **Leased**. The two carried-over Wix leases (202 Fair Street, 2200 Rymal Road E) still use **Leased**. Switch 202 Fair Street to `rented` if the residential distinction should apply throughout.
-
-### The Wix photos on the earlier eight
-
-Eight earlier closings still point at `static.wixstatic.com` and **will stop resolving when the Wix subscription lapses.** Every one carries an `onerror` fallback to `assets/photo-placeholder.jpg`, so the layout degrades gracefully rather than showing broken-image icons. It still needs fixing properly.
+Those eight images **stop resolving when the Wix subscription lapses.** Each carries an `onerror` fallback to `assets/photo-placeholder.jpg`, so the layout degrades to a branded card rather than showing broken-image icons. It still needs fixing properly.
 
 **Before cancelling Wix:**
 
@@ -159,39 +120,46 @@ Eight earlier closings still point at `static.wixstatic.com` and **will stop res
 
 ### Adding a sold property
 
-Copy an `<article class="sold-card reveal">` block and edit address, city, specs, price, and image. The optional `<div class="specs">` line carries beds, baths, and size.
+Copy an `<article class="sold-card reveal">` block and edit address, city, price, and image. Use `class="sold-seal lease"` instead of `class="sold-seal"` for leases, and `class="price small"` for lease figures so the type does not overflow.
 
 ---
 
 ## Forms
 
-The evaluation form posts to Formspree. **It is not configured yet.**
+The evaluation form builds a pre-filled email to `valimikho@gmail.com` when submitted. It works with no third-party service and no configuration.
 
-1. Create a free form at [formspree.io](https://formspree.io) pointed at `valimikho@gmail.com`
-2. In `index.html`, find `REPLACE_WITH_FORM_ID` and substitute the real form ID
+To route submissions into a CRM later, add a Formspree or serverless endpoint as the form's `action` and remove the submit handler in the `EVALUATION FORM` script block.
 
-Until that is done, submitting the form opens the visitor's mail client pre-filled with their answers addressed to Vali, so no enquiry is ever silently lost. Once configured, the fallback disengages automatically.
+---
+
+## What was removed, and why
+
+Three sections were deleted because the content was fabricated rather than merely unfinished:
+
+**Testimonials.** Invented client names with stock-photo faces making specific performance claims. For a licensed REALTOR that is a RECO advertising problem, not a polish issue. Do not re-add testimonials unless they are genuine and the client has consented.
+
+**Area statistics.** Median prices and sold counts on the neighbourhood cards were invented. Replaced with a link into the matching city tab. If Vali wants real numbers there, pull them from the board and update quarterly.
+
+**Blog and Instagram.** Placeholder articles and stock tiles posing as his feed. Both removed along with their now-dead CSS.
 
 ---
 
 ## SEO
 
-### In place
-
-- Title and meta description targeting Hamilton and Burlington REALTOR® intent
+- Title and meta description targeting the nine served cities
 - Canonical to `https://www.valimikho.com/`
 - Open Graph and Twitter Cards with a branded 1200x630 preview
 - Geo meta for the Burlington office
-- The Google Search Console verification token carried over from the Wix site, so verification survives the migration
+- Google Search Console verification token carried over from the Wix site, so verification survives the migration
 - Preconnect and DNS-prefetch for the myRealPage IDX domain
 - Lazy loading and async decoding on all below-the-fold images
-- 301 redirects from the old Wix URL structure (see `vercel.json`)
+- 21 redirects from old Wix URLs and from each city slug (see `vercel.json`)
 
 ### Structured data
 
-Five JSON-LD entities in one `@graph`: `RealEstateAgent` (full NAP, hours, service areas, offer catalog), `Person`, `WebSite` with SearchAction, `BreadcrumbList`, and `FAQPage` with seven questions.
+Five JSON-LD entities in one `@graph`: `RealEstateAgent` (full NAP, hours, nine service areas, offer catalog), `Person`, `WebSite` with SearchAction, `BreadcrumbList`, and `FAQPage` with seven questions.
 
-Validate changes at [validator.schema.org](https://validator.schema.org/) and Search Console's Rich Results Test. Keep the FAQPage JSON answers matching the visible FAQ text, or the rich result becomes ineligible.
+Validate changes at [validator.schema.org](https://validator.schema.org/). Keep the FAQPage JSON answers matching the visible FAQ text, or the rich result becomes ineligible.
 
 ### Post-launch checklist
 
@@ -210,12 +178,16 @@ Required by the ITSO agreement and the CREA Trademark Manual. Already in the bui
 - Copyright: "Listing content protected by copyright and licensed by Information Technology Systems Ontario"
 - Personal, non-commercial use notice
 - "Deemed reliable but not guaranteed accurate" disclaimer
-- Listing brokerage name on listing displays (handled by the widget)
+- Listing brokerage name on every listing (handled by the widget, do not hide or shrink it with CSS)
 - Contact method visible beside listings
 - CREA trademark statement for MLS® and REALTOR® marks
 - Privacy policy at `#privacy`, disclosing that data may be shared with ITSO
 
 Trademark form: `MLS®`, `Multiple Listing Service®`, and `REALTOR®` always in full capitals followed by the registered symbol. Never use MLS® in a domain, email address, or social handle.
+
+### Authorized domains
+
+The ITSO agreement authorizes exactly two display domains: **valimikho.com** and **valimikho.ca**. The widgets may be domain-locked, and displaying ITSO listing content anywhere else is outside what Vali signed. Do not run the live widgets on a GitHub Pages URL or any other staging domain.
 
 ---
 
@@ -230,12 +202,16 @@ SSL provisions automatically. Allow up to a few hours for propagation. Keep Wix 
 
 ---
 
-## Accessibility and quality baseline
+## Quality baseline
 
+Verified in a headless browser across eleven viewports from 320px to 1920px:
+
+- Zero horizontal overflow at every breakpoint
+- Zero console errors
 - Single `<h1>`, ordered heading hierarchy
-- Alt text on all 43 images
-- `aria-label` on landmarks, `aria-expanded` on the FAQ accordion
-- Mobile nav overlay traps focus, closes on Escape, restores focus on close
+- Alt text on every image
+- Tabs support arrow keys, Home and End, with `aria-selected` and `hidden` maintained
+- Mobile nav traps focus, closes on Escape, restores focus on close
 - `prefers-reduced-motion` respected
 - No `localStorage` or `sessionStorage`
 - Security headers and HSTS via `vercel.json`
@@ -244,14 +220,11 @@ SSL provisions automatically. Allow up to a few hours for propagation. Keep Wix 
 
 ## Still to do before launch
 
-1. **Re-host the eight earlier sold photos** off Wix. Highest priority.
-2. **Optionally add the ~22 further closings** listed in the OneHome exports. Needs photography; all other data is available. See "Further closings available but not yet added" above.
-3. **Configure Formspree** and remove the `REPLACE_WITH_FORM_ID` placeholder.
-4. **Replace Unsplash stock photography** (29 images) in the hero, listings backgrounds, neighbourhood cards, and blog with Vali's real photography.
-5. **Instagram grid** is placeholder tiles. Connect a feed widget or drop in real post images.
-6. **Blog section** has placeholder articles. Write real posts or hide the section until there is content.
-7. **Social links** in the footer point at generic profiles. Swap in Vali's real URLs.
-8. **Confirm the Elite Developments logo** belongs on the site. It sits in the credentials row beside HomeLife.
+1. **Re-host the eight sold photos** off Wix. Highest priority.
+2. **Replace the remaining stock photography** in the hero, seller, and invest sections with Vali's own images.
+3. **Social links** in the footer point at generic profiles. Swap in Vali's real URLs.
+4. **Confirm the Elite Developments logo** belongs in the credentials row beside HomeLife.
+5. **Set sort order to newest-first** on each of the nine city searches in myRealPage.
 
 ---
 

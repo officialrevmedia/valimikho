@@ -2,50 +2,172 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "redirects": [
-    { "source": "/all", "destination": "/#listings", "permanent": true },
-    { "source": "/buy", "destination": "/#buyers", "permanent": true },
-    { "source": "/rent", "destination": "/#sellers", "permanent": true },
-    { "source": "/copy-of-buyers", "destination": "/#sellers", "permanent": true },
-    { "source": "/copy-of-blog", "destination": "/#faq", "permanent": true },
-    { "source": "/news", "destination": "/#insight", "permanent": true },
-    { "source": "/listings", "destination": "/#listings", "permanent": true },
-    { "source": "/sold", "destination": "/#sold", "permanent": true },
-    { "source": "/contact", "destination": "/#contact", "permanent": true },
-    { "source": "/search", "destination": "/#search", "permanent": true }
+    {
+      "source": "/all",
+      "destination": "/#listings",
+      "permanent": true
+    },
+    {
+      "source": "/buy",
+      "destination": "/#buyers",
+      "permanent": true
+    },
+    {
+      "source": "/rent",
+      "destination": "/#sellers",
+      "permanent": true
+    },
+    {
+      "source": "/copy-of-buyers",
+      "destination": "/#sellers",
+      "permanent": true
+    },
+    {
+      "source": "/copy-of-blog",
+      "destination": "/#faq",
+      "permanent": true
+    },
+    {
+      "source": "/news",
+      "destination": "/#faq",
+      "permanent": true
+    },
+    {
+      "source": "/blog",
+      "destination": "/#faq",
+      "permanent": true
+    },
+    {
+      "source": "/insight",
+      "destination": "/#faq",
+      "permanent": true
+    },
+    {
+      "source": "/listings",
+      "destination": "/#listings",
+      "permanent": true
+    },
+    {
+      "source": "/sold",
+      "destination": "/#sold",
+      "permanent": true
+    },
+    {
+      "source": "/contact",
+      "destination": "/#contact",
+      "permanent": true
+    },
+    {
+      "source": "/search",
+      "destination": "/#search",
+      "permanent": true
+    },
+    {
+      "source": "/hamilton",
+      "destination": "/#search",
+      "permanent": true
+    },
+    {
+      "source": "/burlington",
+      "destination": "/#search",
+      "permanent": true
+    },
+    {
+      "source": "/ancaster",
+      "destination": "/#search",
+      "permanent": true
+    },
+    {
+      "source": "/oakville",
+      "destination": "/#search",
+      "permanent": true
+    },
+    {
+      "source": "/mississauga",
+      "destination": "/#search",
+      "permanent": true
+    },
+    {
+      "source": "/milton",
+      "destination": "/#search",
+      "permanent": true
+    },
+    {
+      "source": "/guelph",
+      "destination": "/#search",
+      "permanent": true
+    },
+    {
+      "source": "/toronto",
+      "destination": "/#search",
+      "permanent": true
+    },
+    {
+      "source": "/niagara",
+      "destination": "/#search",
+      "permanent": true
+    }
   ],
   "headers": [
     {
       "source": "/assets/(.*)",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
       ]
     },
     {
       "source": "/photos/(.*)",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
       ]
     },
     {
       "source": "/og-cover.jpg",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=604800" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=604800"
+        }
       ]
     },
     {
       "source": "/",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        }
       ]
     },
     {
       "source": "/(.*)",
       "headers": [
-        { "key": "X-Content-Type-Options", "value": "nosniff" },
-        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
-        { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
-        { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=(self), interest-cohort=()" },
-        { "key": "Strict-Transport-Security", "value": "max-age=63072000; includeSubDomains; preload" }
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "SAMEORIGIN"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "camera=(), microphone=(), geolocation=(self), interest-cohort=()"
+        },
+        {
+          "key": "Strict-Transport-Security",
+          "value": "max-age=63072000; includeSubDomains; preload"
+        }
       ]
     }
   ]

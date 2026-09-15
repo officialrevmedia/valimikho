@@ -3,13 +3,13 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://www.valimikho.com/</loc>
-    <lastmod>2026-08-01</lastmod>
-    <changefreq>weekly</changefreq>
+    <lastmod>2026-09-15</lastmod>
+    <changefreq>daily</changefreq>
     <priority>1.0</priority>
     <image:image>
       <image:loc>https://www.valimikho.com/og-cover.jpg</image:loc>
       <image:title>Vali Mikho Real Estate, Hamilton and Burlington</image:title>
-      <image:caption>Buy, sell, and invest across Hamilton, Burlington, and the GTA.</image:caption>
+      <image:caption>Browse homes for sale across Hamilton, Burlington, Oakville and the GTA.</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://www.valimikho.com/assets/vali-mikho-headshot.jpg</image:loc>
