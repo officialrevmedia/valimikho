@@ -7,8 +7,8 @@
 <!-- ============================================================
      PRIMARY SEO
      ============================================================ -->
-<title>Vali Mikho | Hamilton &amp; Burlington REALTOR® | $300M+ Sold Since 2015</title>
-<meta name="description" content="Browse homes for sale in Hamilton, Burlington, Ancaster, Oakville, Mississauga, Milton, Guelph, Toronto and Niagara. Over $300 million sold since 2015. Free home evaluation from Vali Mikho, HomeLife Professionals Realty Inc.">
+<title>Vali Mikho | Hamilton &amp; Burlington REALTOR® | $350M+ Sold Since 2015</title>
+<meta name="description" content="Browse homes for sale in Hamilton, Burlington, Ancaster, Oakville, Mississauga, Milton, Guelph, Toronto and Niagara. Over $350 million sold since 2015. Free home evaluation from Vali Mikho, HomeLife Professionals Realty Brokerage">
 <meta name="keywords" content="Hamilton homes for sale, Burlington homes for sale, Ancaster real estate, Oakville homes for sale, Mississauga real estate, Milton homes for sale, Guelph real estate, Niagara homes for sale, Golden Horseshoe realtor, free home evaluation, Vali Mikho, HomeLife Professionals Realty">
 <meta name="author" content="Vali Mikho">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
@@ -34,8 +34,8 @@
 <meta property="og:site_name" content="Vali Mikho Real Estate">
 <meta property="og:locale" content="en_CA">
 <meta property="og:url" content="https://www.valimikho.com/">
-<meta property="og:title" content="Vali Mikho | Hamilton &amp; Burlington REALTOR® | $300M+ Sold Since 2015">
-<meta property="og:description" content="Buy, sell, and invest across Hamilton, Burlington, and the GTA. Over $300 million sold and 500+ families served. Free home evaluation.">
+<meta property="og:title" content="Vali Mikho | Hamilton &amp; Burlington REALTOR® | $350M+ Sold Since 2015">
+<meta property="og:description" content="Buy, sell, and invest across Hamilton, Burlington, and the GTA. Over $350 million sold and 500+ families served. Free home evaluation.">
 <meta property="og:image" content="https://www.valimikho.com/og-cover.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -43,7 +43,7 @@
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Vali Mikho | Hamilton &amp; Burlington REALTOR®">
-<meta name="twitter:description" content="Over $300 million sold since 2015. Buy, sell, and invest across Hamilton, Burlington, and the GTA.">
+<meta name="twitter:description" content="Over $350 million sold since 2015. Buy, sell, and invest across Hamilton, Burlington, and the GTA.">
 <meta name="twitter:image" content="https://www.valimikho.com/og-cover.jpg">
 
 <!-- ============================================================
@@ -68,10 +68,10 @@
       "@type": "RealEstateAgent",
       "@id": "https://www.valimikho.com/#agent",
       "name": "Vali Mikho Real Estate",
-      "alternateName": "Vali Mikho, HomeLife Professionals Realty Inc.",
+      "alternateName": "Vali Mikho, HomeLife Professionals Realty Brokerage",
       "url": "https://www.valimikho.com/",
       "image": "https://www.valimikho.com/og-cover.jpg",
-      "description": "Real estate representation for buyers, sellers, and investors across Hamilton, Ancaster, Burlington, Oakville, Mississauga, Milton, Guelph, Toronto and the Niagara region. Over $300 million in sales since 2015.",
+      "description": "Real estate representation for buyers, sellers, and investors across Hamilton, Ancaster, Burlington, Oakville, Mississauga, Milton, Guelph, Toronto and the Niagara region. Over $350 million in sales since 2015.",
       "telephone": "+1-905-531-1046",
       "email": "valimikho@gmail.com",
       "priceRange": "$$$",
@@ -171,7 +171,7 @@
       },
       "parentOrganization": {
         "@type": "RealEstateAgent",
-        "name": "HomeLife Professionals Realty Inc., Brokerage"
+        "name": "HomeLife Professionals Realty Brokerage"
       },
       "hasOfferCatalog": {
         "@type": "OfferCatalog",
@@ -702,6 +702,32 @@ p{margin:0 0 14px}
   margin-bottom:14px;outline:none;
   transition:border-color .2s var(--ease);
 }
+
+/* Native select menus inherit the OS palette, which rendered white text on a
+   white popup. Force a light popup with dark text so every option is legible
+   before the user hovers it. */
+.eval-form select{
+  appearance:none;-webkit-appearance:none;-moz-appearance:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23DFC993' stroke-width='1.8' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;
+  background-position:right 18px center;
+  padding-right:46px;cursor:pointer;
+}
+.eval-form select option,
+.eval-form select optgroup{
+  background:#FFFFFF;
+  color:#0F2740;
+  font-size:15px;
+  padding:10px 12px;
+}
+.eval-form select option:checked,
+.eval-form select option:hover{background:#F5EDD9;color:#0F2740}
+.eval-form select:invalid,
+.eval-form select option[value=""]{color:rgba(255,255,255,.72)}
+.eval-form select:focus{border-color:var(--gold-bright)}
+
+/* Same treatment for the hero city picker */
+.quick-search select option{background:#FFFFFF;color:#0F2740}
 .eval-form input::placeholder{color:rgba(255,255,255,.5)}
 .eval-form input:focus{border-color:var(--gold-bright)}
 .eval-form .row2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
@@ -881,7 +907,7 @@ p{margin:0 0 14px}
 .timeline{margin-top:30px;display:flex;flex-direction:column;gap:0;border-left:2px solid var(--gold-soft);padding-left:24px;position:relative}
 .tl-item{padding:14px 0;position:relative}
 .tl-item::before{content:"";position:absolute;left:-31px;top:18px;width:14px;height:14px;border-radius:50%;background:#fff;border:2px solid var(--gold)}
-.tl-item.active::before{background:var(--gold)}
+.tl-item::before{background:var(--gold)}
 .tl-item .day{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-deep);font-weight:600;margin-bottom:4px}
 .tl-item .title{font-family:'Cormorant Garamond',serif;font-size:20px;color:var(--ink);font-weight:500;line-height:1.2;margin-bottom:4px}
 .tl-item .desc{font-size:13px;color:var(--muted);line-height:1.5}
@@ -1364,6 +1390,190 @@ body.mnav-lock{overflow:hidden}
   font-size:11.5px;color:var(--muted);letter-spacing:.02em;
 }
 
+/* ============== BUYER JOURNEY (expandable steps) ============== */
+.journey-panel{display:none}
+.journey-panel.active{display:block;animation:cityFade .4s var(--ease)}
+.jsteps{
+  display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:38px;
+}
+.jstep{
+  background:var(--surface);
+  border:1px solid var(--line-soft);
+  border-radius:var(--r-md);
+  overflow:hidden;
+  transition:border-color .3s var(--ease), box-shadow .3s var(--ease);
+}
+.jstep:hover{border-color:var(--gold)}
+.jstep.open{border-color:var(--gold);box-shadow:var(--shadow-2)}
+.jstep-q{
+  width:100%;background:none;border:none;cursor:pointer;text-align:left;
+  display:flex;align-items:flex-start;gap:16px;padding:20px 22px;
+  font-family:inherit;
+}
+.jstep-q .num{
+  font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:600;
+  color:var(--gold-deep);line-height:1;flex-shrink:0;width:26px;padding-top:2px;
+}
+.jstep-q .t{
+  flex:1;font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:500;
+  color:var(--ink);line-height:1.22;letter-spacing:-.005em;
+}
+.jstep-q .ic{
+  flex-shrink:0;width:22px;height:22px;border-radius:50%;
+  border:1px solid var(--line);position:relative;margin-top:2px;
+  transition:all .3s var(--ease);
+}
+.jstep-q .ic::before,.jstep-q .ic::after{
+  content:"";position:absolute;background:var(--gold-deep);
+  top:50%;left:50%;transform:translate(-50%,-50%);transition:all .3s var(--ease);
+}
+.jstep-q .ic::before{width:9px;height:1.5px}
+.jstep-q .ic::after{width:1.5px;height:9px}
+.jstep.open .jstep-q .ic{background:var(--gold);border-color:var(--gold)}
+.jstep.open .jstep-q .ic::before{background:#fff}
+.jstep.open .jstep-q .ic::after{opacity:0}
+.jstep-a{
+  max-height:0;overflow:hidden;opacity:0;
+  transition:max-height .45s var(--ease),opacity .3s var(--ease),padding .3s var(--ease);
+  padding:0 22px 0 64px;
+}
+.jstep.open .jstep-a{max-height:520px;opacity:1;padding:0 22px 22px 64px}
+.jstep-a .blk{margin-bottom:13px}
+.jstep-a .blk:last-child{margin-bottom:0}
+.jstep-a .lab{
+  font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;font-weight:700;
+  color:var(--gold-deep);display:block;margin-bottom:4px;
+}
+.jstep-a p{font-size:14px;line-height:1.66;color:var(--slate);margin:0}
+
+/* ============== INVESTOR ENQUIRY MODAL ============== */
+.inv-modal{
+  position:fixed;inset:0;z-index:400;display:none;
+  align-items:flex-start;justify-content:center;
+  background:rgba(15,39,64,.72);backdrop-filter:blur(6px);
+  padding:24px 16px;overflow-y:auto;
+}
+.inv-modal.open{display:flex}
+.inv-card{
+  background:var(--surface);border-radius:var(--r-lg);
+  max-width:620px;width:100%;margin:auto;
+  box-shadow:0 40px 90px rgba(15,39,64,.4);
+  position:relative;overflow:hidden;
+  animation:invIn .4s var(--ease);
+}
+@keyframes invIn{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.inv-card::before{
+  content:"";position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--gold-bright),var(--gold),var(--gold-deep));
+}
+.inv-head{padding:32px 34px 20px;border-bottom:1px solid var(--line-soft)}
+.inv-head .eyebrow{color:var(--gold-deep);font-size:10px;letter-spacing:.24em;text-transform:uppercase;font-weight:700}
+.inv-head h3{font-family:'Cormorant Garamond',serif;font-size:29px;font-weight:500;color:var(--ink);margin:10px 0 8px;line-height:1.12}
+.inv-head p{font-size:13.5px;color:var(--muted);line-height:1.6}
+.inv-close{
+  position:absolute;top:18px;right:18px;width:34px;height:34px;border-radius:50%;
+  border:1px solid var(--line);background:var(--bg);cursor:pointer;
+  display:grid;place-items:center;transition:all .25s var(--ease);z-index:2;
+}
+.inv-close:hover{background:var(--ink);border-color:var(--ink)}
+.inv-close svg{stroke:var(--ink)}
+.inv-close:hover svg{stroke:#fff}
+.inv-body{padding:26px 34px 32px}
+.inv-body label{
+  display:block;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;
+  font-weight:700;color:var(--muted);margin-bottom:6px;
+}
+.inv-body input,.inv-body select,.inv-body textarea{
+  width:100%;padding:13px 15px;margin-bottom:16px;
+  border:1px solid var(--line);border-radius:var(--r-sm);
+  background:var(--bg);color:var(--ink);
+  font-family:inherit;font-size:14.5px;outline:none;
+  transition:border-color .25s var(--ease);box-sizing:border-box;
+}
+.inv-body select{
+  appearance:none;-webkit-appearance:none;-moz-appearance:none;cursor:pointer;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238C6F35' stroke-width='1.8' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 15px center;padding-right:42px;
+}
+.inv-body select option{background:#fff;color:var(--ink)}
+.inv-body input:focus,.inv-body select:focus,.inv-body textarea:focus{border-color:var(--gold)}
+.inv-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.inv-note{font-size:11.5px;color:var(--hush);line-height:1.6;margin-top:6px}
+.inv-success{
+  display:none;padding:44px 34px;text-align:center;
+}
+.inv-success.show{display:block}
+.inv-success .tick{
+  width:56px;height:56px;border-radius:50%;background:var(--gold-soft);
+  display:grid;place-items:center;margin:0 auto 20px;
+}
+.inv-success h3{font-family:'Cormorant Garamond',serif;font-size:27px;font-weight:500;color:var(--ink);margin-bottom:12px}
+.inv-success p{font-size:14.5px;color:var(--slate);line-height:1.7;max-width:42ch;margin:0 auto 22px}
+body.inv-lock{overflow:hidden}
+
+/* ============== PLAZA EXAMPLE ============== */
+.plaza{
+  margin-top:64px;background:var(--surface);
+  border:1px solid var(--line);border-radius:var(--r-lg);
+  overflow:hidden;box-shadow:var(--shadow-1);
+}
+.plaza-head{
+  padding:30px clamp(22px,3vw,38px) 24px;
+  border-bottom:1px solid var(--line-soft);
+  background:var(--bg-soft);
+}
+.plaza-flag{
+  display:inline-block;background:var(--ink);color:var(--gold-bright);
+  font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;font-weight:700;
+  padding:6px 13px;border-radius:2px;margin-bottom:14px;
+}
+.plaza-head h3{font-family:'Cormorant Garamond',serif;font-size:clamp(24px,3vw,32px);font-weight:500;color:var(--ink);line-height:1.14;margin-bottom:10px}
+.plaza-head p{font-size:14px;color:var(--muted);line-height:1.65;max-width:70ch}
+.plaza-body{padding:clamp(22px,3vw,38px)}
+.plaza-cols{display:grid;grid-template-columns:1fr 1fr;gap:clamp(22px,3vw,40px)}
+.plaza-block h4{
+  font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;font-weight:700;
+  color:var(--gold-deep);margin-bottom:14px;padding-bottom:10px;
+  border-bottom:1px solid var(--line-soft);
+}
+.plaza-line{
+  display:flex;justify-content:space-between;align-items:baseline;gap:14px;
+  padding:8px 0;font-size:14px;border-bottom:1px solid var(--line-soft);
+}
+.plaza-line:last-child{border-bottom:none}
+.plaza-line .l{color:var(--slate);line-height:1.4}
+.plaza-line .v{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:600;color:var(--ink);white-space:nowrap}
+.plaza-line .v.neg{color:var(--rose)}
+.plaza-line.total{
+  border-top:2px solid var(--ink);border-bottom:none;
+  margin-top:8px;padding-top:12px;
+}
+.plaza-line.total .l{font-weight:700;color:var(--ink);font-size:13.5px;letter-spacing:.02em}
+.plaza-line.total .v{font-size:21px;color:var(--gold-deep)}
+.plaza-line.sub{background:var(--bg-soft);margin:6px -10px;padding:9px 10px;border-radius:var(--r-sm);border-bottom:none}
+.plaza-line.sub .l{font-weight:700;color:var(--ink)}
+.plaza-line.sub .v{color:var(--ink)}
+.plaza-metrics{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:32px;
+  padding-top:28px;border-top:1px solid var(--line-soft);
+}
+.plaza-metric{text-align:center;padding:18px 12px;background:var(--bg-soft);border-radius:var(--r-sm)}
+.plaza-metric .n{font-family:'Cormorant Garamond',serif;font-size:27px;font-weight:600;color:var(--gold-deep);line-height:1}
+.plaza-metric .l{font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:7px;font-weight:600;line-height:1.4}
+.plaza-stress{margin-top:28px;padding:22px 24px;background:var(--bg-blue);border-radius:var(--r-md);border-left:3px solid var(--blue)}
+.plaza-stress h4{font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;font-weight:700;color:var(--blue);margin-bottom:14px}
+.plaza-stress .row{display:flex;justify-content:space-between;gap:14px;padding:7px 0;font-size:13.5px;border-bottom:1px solid rgba(30,58,95,.1)}
+.plaza-stress .row:last-child{border-bottom:none}
+.plaza-stress .row .l{color:var(--slate)}
+.plaza-stress .row .v{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:600;color:var(--ink);white-space:nowrap}
+.plaza-disc{
+  margin-top:26px;padding:20px 24px;background:#FBF0EE;
+  border-left:3px solid var(--rose);border-radius:var(--r-sm);
+  font-size:12.5px;line-height:1.72;color:var(--slate);
+}
+.plaza-disc strong{color:#9C4747;display:block;margin-bottom:7px;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase}
+.plaza-foot{padding:0 clamp(22px,3vw,38px) clamp(26px,3vw,36px)}
+
 /* ============== REVEAL ============== */
 .reveal{opacity:0;transform:translateY(24px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
 .reveal.in{opacity:1;transform:none}
@@ -1375,6 +1585,9 @@ body.mnav-lock{overflow:hidden}
   .sold-ledger-head .cell:nth-child(2){border-right:none}
   .sold-ledger-head .cell:nth-child(1),.sold-ledger-head .cell:nth-child(2){border-bottom:1px solid rgba(255,255,255,.09)}
   .journey-track{grid-template-columns:repeat(2,1fr)}
+  .jsteps{grid-template-columns:1fr}
+  .plaza-cols{grid-template-columns:1fr}
+  .plaza-metrics{grid-template-columns:1fr 1fr}
   .invest-pillars{grid-template-columns:1fr}
   .nb-grid{grid-template-columns:repeat(2,1fr)}
   .area-grid{grid-template-columns:repeat(2,1fr)}
@@ -1410,6 +1623,13 @@ body.mnav-lock{overflow:hidden}
   /* Long button labels wrap instead of forcing horizontal scroll */
   .btn{white-space:normal;text-align:center;max-width:100%;box-sizing:border-box}
   .journey-track{grid-template-columns:1fr}
+  .jstep-q{padding:16px}
+  .inv-row{grid-template-columns:1fr}
+  .inv-head,.inv-body{padding-left:20px;padding-right:20px}
+  .plaza-metrics{grid-template-columns:1fr 1fr;gap:10px}
+  .jstep-q .t{font-size:17px}
+  .jstep-a{padding-left:16px}
+  .jstep.open .jstep-a{padding:0 16px 18px 16px}
   .area-grid{grid-template-columns:1fr 1fr;gap:12px}
   .nb-grid{grid-template-columns:1fr 1fr;gap:12px}
   .topstrip{font-size:10.5px}
@@ -1500,7 +1720,7 @@ body.mnav-lock{overflow:hidden}
       <a href="#listings" class="btn btn-light">Browse Active Listings</a>
     </div>
     <div class="hero-stats">
-      <div class="stat"><div class="num"><em>$300</em>M+</div><div class="lab">In Sales Since 2015</div></div>
+      <div class="stat"><div class="num"><em>$350</em>M+</div><div class="lab">In Sales Since 2015</div></div>
       <div class="stat"><div class="num"><em>500</em>+</div><div class="lab">Clients Served</div></div>
       <div class="stat"><div class="num"><em>350</em>+</div><div class="lab">Pre-Construction Units</div></div>
       <div class="stat"><div class="num"><em>11</em> yrs</div><div class="lab">Of Local Experience</div></div>
@@ -1553,7 +1773,7 @@ body.mnav-lock{overflow:hidden}
             <div class="logo-wrap">
               <img src="assets/homelife-logo.png" alt="HomeLife Higher Standards" loading="lazy" decoding="async">
             </div>
-            <div class="lab"><strong>HomeLife</strong> · Brokerage of Record</div>
+            <div class="lab"><strong>HomeLife Professionals Realty</strong> · Brokerage</div>
           </div>
           <div class="cred">
             <div class="logo-wrap">
@@ -2354,30 +2574,420 @@ body.mnav-lock{overflow:hidden}
   <div class="wrap">
     <div class="s-head reveal">
       <span class="eyebrow">No.04 · Buyer Journey</span>
-      <h2>Eight steps. <em style="color:var(--gold-deep);font-style:italic">Zero surprises.</em></h2>
-      <p class="lede">Buying a home in this market without a defined process is how mistakes happen. Here's the path Vali walks every client through, in plain order.</p>
+      <h2>Eight steps, <em style="color:var(--gold-deep);font-style:italic">clearly explained</em>.</h2>
+      <p class="lede">Every buyer is different, so the path is too. Choose the situation that matches yours, then open any step to see what happens, how Vali helps, and what to have ready.</p>
     </div>
 
     <div class="journey-pills reveal">
-      <button class="on" data-journey="first">First-Time Buyer</button>
-      <button data-journey="moveup">Move-Up Buyer</button>
-      <button data-journey="investor">Investor</button>
-      <button data-journey="precon">Pre-Construction</button>
+      <button class="on" data-journey="first" aria-expanded="true">First-Time Buyer</button>
+      <button class="" data-journey="moveup" aria-expanded="false">Move-Up Buyer</button>
+      <button class="" data-journey="investor" aria-expanded="false">Investor</button>
+      <button class="" data-journey="precon" aria-expanded="false">Pre-Construction</button>
     </div>
 
-    <div class="journey-track" id="journeyTrack">
-      <div class="j-step reveal"><div class="num">01</div><h4>Discovery Call</h4><p>Thirty minutes on budget, timing, and neighbourhoods. Vali explains the entire process in plain language before any paperwork.</p></div>
-      <div class="j-step reveal"><div class="num">02</div><h4>Pre-Approval &amp; Incentives</h4><p>Trusted mortgage advisors get you a real number, and Vali walks you through land transfer tax rebates and every first-time buyer program you qualify for.</p></div>
-      <div class="j-step reveal"><div class="num">03</div><h4>Search Setup</h4><p>Custom MLS feed with your criteria. New listings hit your inbox within minutes of going live, not days later.</p></div>
-      <div class="j-step reveal"><div class="num">04</div><h4>Showings &amp; Tours</h4><p>Vali tours with you and teaches you what to look for: mechanicals, layout, and resale value, not just paint and staging.</p></div>
-      <div class="j-step reveal"><div class="num">05</div><h4>Offer Strategy</h4><p>Comparable sales analysis and conditions that protect a first purchase, like financing and inspection. You never overpay out of fear.</p></div>
-      <div class="j-step reveal"><div class="num">06</div><h4>Negotiation</h4><p>Your first negotiation is Vali's five hundredth. He handles the pressure tactics so you never bid blind.</p></div>
-      <div class="j-step reveal"><div class="num">07</div><h4>Inspection &amp; Conditions</h4><p>Vetted home inspector, lawyer, insurer. Deposits, closing costs, and timelines explained step by step, nothing assumed.</p></div>
-      <div class="j-step reveal"><div class="num">08</div><h4>Closing &amp; Beyond</h4><p>Keys delivered, moving checklist sent, and first-year check-ins. Vali stays in your corner long after your first closing.</p></div>
+    <div class="journey-panel active" id="journey-first">
+      <div class="jsteps">
+        <div class="jstep">
+          <button class="jstep-q" aria-expanded="false">
+            <span class="num">01</span>
+            <span class="t">Your Goals &amp; Buying Plan</span>
+            <span class="ic" aria-hidden="true"></span>
+          </button>
+          <div class="jstep-a">
+            <div class="blk"><span class="lab">What happens</span><p>We set out what you are trying to achieve, when you want to move, and what the realistic path looks like from where you are today.</p></div>
+            <div class="blk"><span class="lab">How Vali helps</span><p>Vali maps the whole process in plain language before any paperwork, so you know the order of events and roughly what each stage costs.</p></div>
+            <div class="blk"><span class="lab">What to prepare</span><p>A rough moving date, who is buying with you, and any non-negotiables such as school catchment or commute.</p></div>
+          </div>
+        </div>
+        <div class="jstep">
+          <button class="jstep-q" aria-expanded="false">
+            <span class="num">02</span>
+            <span class="t">Your Budget &amp; Total Buying Costs</span>
+            <span class="ic" aria-hidden="true"></span>
+          </button>
+          <div class="jstep-a">
+            <div class="blk"><span class="lab">What happens</span><p>You get a mortgage pre-approval and we add the costs that sit on top of the purchase price.</p></div>
+            <div class="blk"><span class="lab">How Vali helps</span><p>Vali introduces mortgage professionals, then walks through land transfer tax, legal fees, title insurance, inspection and moving costs, and which first-time buyer rebates you may qualify for.</p></div>
+            <div class="blk"><span class="lab">What to prepare</span><p>Recent pay stubs, notices of assessment, and a clear picture of your savings and existing debts.</p></div>
+          </div>
+        </div>
+        <div class="jstep">
+          <button class="jstep-q" aria-expanded="false">
+            <span class="num">03</span>
+            <span class="t">Find the Right Home &amp; Neighbourhood</span>
+            <span class="ic" aria-hidden="true"></span>
+          </button>
+          <div class="jstep-a">
+            <div class="blk"><span class="lab">What happens</span><p>We turn your criteria into a live search and narrow the areas that actually fit your budget and daily life.</p></div>
+            <div class="blk"><span class="lab">How Vali helps</span><p>Vali sets up MLS alerts and shares what he knows about each pocket: pricing patterns, what tends to sit, and what tends to move quickly.</p></div>
+            <div class="blk"><span class="lab">What to prepare</span><p>An honest list of what you need versus what you would like, and your maximum commute.</p></div>
+          </div>
+        </div>
+        <div class="jstep">
+          <button class="jstep-q" aria-expanded="false">
+            <span class="num">04</span>
+            <span class="t">Tour Homes &amp; Know What to Look For</span>
+            <span class="ic" aria-hidden="true"></span>
+          </button>
+          <div class="jstep-a">
+            <div class="blk"><span class="lab">What happens</span><p>You start viewing, and each showing teaches you more about what your budget buys in that area.</p></div>
+            <div class="blk"><span class="lab">How Vali helps</span><p>Vali points out the things that cost money later: age of roof, furnace and windows, grading, layout limitations, and how the home is likely to resell.</p></div>
+            <div class="blk"><span class="lab">What to prepare</span><p>A note-taking habit. Photos and a short list of concerns after each showing help far more than memory.</p></div>
+          </div>
+        </div>
+        <div class="jstep">
+          <button class="jstep-q" aria-expanded="false">
+            <span class="num">05</span>
+            <span class="t">Understand Your Offer</span>
+            <span class="ic" aria-hidden="true"></span>
+          </button>
+          <div class="jstep-a">
+            <div class="blk"><span class="lab">What happens</span><p>Before writing, we review comparable sales and decide which conditions belong in the offer.</p></div>
+            <div class="blk"><span class="lab">How Vali helps</span><p>Vali explains what each clause does, what a condition protects you from, and how the deposit and closing date work.</p></div>
+            <div class="blk"><span class="lab">What to prepare</span><p>Your lawyer's contact details, and a decision on how quickly you can close.</p></div>
+          </div>
+        </div>
+        <div class="jstep">
+          <button class="jstep-q" aria-expanded="false">
+            <span class="num">06</span>
+            <span class="t">Negotiate With a Clear Limit</span>
+            <span class="ic" aria-hidden="true"></span>
+          </button>
+          <div class="jstep-a">
+            <div class="blk"><span class="lab">What happens</span><p>The offer goes in and the back-and-forth begins, sometimes against other buyers.</p></div>
+            <div class="blk"><span class="lab">How Vali helps</span><p>Vali handles the negotiation and keeps you anchored to the number you set beforehand, so decisions are made on evidence rather than pressure in the moment.</p></div>
+            <div class="blk"><span class="lab">What to prepare</span><p>A firm walk-away number agreed before the offer is presented, not during.</p></div>
+          </div>
+        </div>
+        <div class="jstep">
+          <button class="jstep-q" aria-expanded="false">
+            <span class="num">07</span>
+            <span class="t">Complete Your Checks</span>
+            <span class="ic" aria-hidden="true"></span>
+          </button>
+          <div class="jstep-a">
+            <div class="blk"><span class="lab">What happens</span><p>Once an offer is accepted, the conditions are worked through within the agreed deadlines.</p></div>
+            <div class="blk"><span class="lab">How Vali helps</span><p>Vali coordinates the home inspection, lender appraisal and lawyer review, and explains anything the inspector flags so you can decide whether to proceed, renegotiate or walk.</p></div>
+            <div class="blk"><span class="lab">What to prepare</span><p>Availability for the inspection, and prompt responses to your lender's document requests.</p></div>
+          </div>
+        </div>
+        <div class="jstep">
+          <button class="jstep-q" aria-expanded="false">
+            <span class="num">08</span>
+            <span class="t">Prepare for Closing &amp; Move-In</span>
+            <span class="ic" aria-hidden="true"></span>
+          </button>
+          <div class="jstep-a">
+            <div class="blk"><span class="lab">What happens</span><p>Conditions are waived, the file moves to the lawyers, and closing day is scheduled.</p></div>
+            <div class="blk"><span class="lab">How Vali helps</span><p>Vali keeps the lawyer, lender and other side coordinated, and sends a moving checklist covering utilities, insurance and address changes.</p></div>
+            <div class="blk"><span class="lab">What to prepare</span><p>Closing funds at your lawyer, home insurance bound, and movers booked once the deal is firm.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="journey-panel" id="journey-moveup" hidden>
+      <div class="jsteps">
+        <div class="jstep">
+          <button class="jstep-q" aria-expanded="false">
+            <span class="num">01</span>
+            <span class="t">Your Next Move &amp; Priorities</span>
+            <span class="ic" aria-hidden="true"></span>
+          </button>
+          <div class="jstep-a">
+            <div class="blk"><span class="lab">What happens</span><p>We define what the next home needs to solve that the current one does not.</p></div>
+            <div class="blk"><span class="lab">How Vali helps</span><p>Vali works through space, location, schools and long-term plans, and is direct about which of those the market can realistically deliver in your range.</p></div>
+            <div class="blk"><span class="lab">What to prepare</span><p>A clear list of what is driving the move, and your ideal timing.</p></div>
+          </div>
+        </div>
+        <div class="jstep">
+          <button class="jstep-q" aria-expanded="false">
+            <span class="num">02</span>
+            <span class="t">Your Home's Value &amp; Available Equity</span>
+            <span class="ic" aria-hidden="true"></span>
+          </button>
+          <div class="jstep-a">
+            <div class="blk"><span class="lab">What happens</span><p>We establish what your current property is likely to sell for and what equity that frees up.</p></div>
+            <div class="blk"><span class="lab">How Vali helps</span><p>Vali prepares an evaluation from recent comparable sales on your street, and outlines what preparation would be worth doing before listing.</p></div>
+            <div class="blk"><span class="lab">What to prepare</span><p>Your mortgage balance, any secured lines of credit, and a list of improvements you have made.</p></div>
+          </div>
+        </div>
+        <div class="jstep">
+          <button class="jstep-q" aria-expanded="false">
+            <span class="num">03</span>
+            <span class="t">Your Budget &amp; Financing Options</span>
+            <span class="ic" aria-hidden="true"></span>
+          </button>
+          <div class="jstep-a">
+            <div class="blk"><span class="lab">What happens</span><p>Your lender confirms what you can carry, including any overlap between the two transactions.</p></div>
+            <div class="blk"><span class="lab">How Vali helps</span><p>Vali connects you with mortgage professionals who can explain porting, bridge financing and what qualifying looks like while you still hold the first property.</p></div>
+            <div class="blk"><span class="lab">What to prepare</span><p>Current mortgage documents, renewal date, and whether your mortgage is portable.</p></div>
+          </div>
+        </div>
+        <div class="jstep">
+          <button class="jstep-q" aria-expanded="false">
+            <span class="num">04</span>
+            <span class="t">Buy First or Sell First?</span>
+            <span class="ic" aria-hidden="true"></span>
+          </button>
+          <div class="jstep-a">
+            <div class="blk"><span class="lab">What happens</span><p>We weigh the two sequences against your finances and your tolerance for uncertainty.</p></div>
+            <div class="blk"><span class="lab">How Vali helps</span><p>Vali sets out the real trade-offs of each path in current conditions rather than a blanket rule, since the right answer changes with inventory and with your ability to carry both.</p></div>
+            <div class="blk"><span class="lab">What to prepare</span><p>An honest view of how much risk you are comfortable carrying, and whether you have a fallback if timing slips.</p></div>
+          </div>
+        </div>
+        <div class="jstep">
+          <button class="jstep-q" aria-expanded="false">
+            <span class="num">05</span>
+            <span class="t">Prepare to Sell &amp; Search</span>
+            <span class="ic" aria-hidden="true"></span>
+          </button>
+          <div class="jstep-a">
+            <div class="blk"><span class="lab">What happens</span><p>Preparation on the current home runs alongside the search for the next one.</p></div>
+            <div class="blk"><span class="lab">How Vali helps</span><p>Vali coordinates the prep work, photography and launch plan while keeping your search active, so neither side stalls waiting on the other.</p></div>
+            <div class="blk"><span class="lab">What to prepare</span><p>Access for trades and photographers, and decisions on decluttering and any recommended repairs.</p></div>
+          </div>
+        </div>
+        <div class="jstep">
+          <button class="jstep-q" aria-expanded="false">
+            <span class="num">06</span>
+            <span class="t">Negotiate Both Transactions</span>
+            <span class="ic" aria-hidden="true"></span>
+          </button>
+          <div class="jstep-a">
+            <div class="blk"><span class="lab">What happens</span><p>Offers are negotiated on the sale and the purchase, sometimes at the same time.</p></div>
+            <div class="blk"><span class="lab">How Vali helps</span><p>Vali negotiates both sides with an eye on how they interact, since a concession on one can create or remove flexibility on the other.</p></div>
+            <div class="blk"><span class="lab">What to prepare</span><p>Fast availability to review and respond, as both sides often move quickly.</p></div>
+          </div>
+        </div>
+        <div class="jstep">
+          <button class="jstep-q" aria-expanded="false">
+            <span class="num">07</span>
+            <span class="t">Coordinate Conditions &amp; Closing Dates</span>
+            <span class="ic" aria-hidden="true"></span>
+          </button>
+          <div class="jstep-a">
+            <div class="blk"><span class="lab">What happens</span><p>Conditions and closing dates are aligned as closely as the two agreements allow.</p></div>
+            <div class="blk"><span class="lab">How Vali helps</span><p>Vali works with both lawyers and lenders to line the dates up. Where a gap remains, he explains the options for bridging or storage early rather than late.</p></div>
+            <div class="blk"><span class="lab">What to prepare</span><p>Flexibility on dates where possible, and a plan if the two closings do not land on the same day.</p></div>
+          </div>
+        </div>
+        <div class="jstep">
+          <button class="jstep-q" aria-expanded="false">
+            <span class="num">08</span>
+            <span class="t">Your Moving &amp; Handover Plan</span>
+            <span class="ic" aria-hidden="true"></span>
+          </button>
+          <div class="jstep-a">
+            <div class="blk"><span class="lab">What happens</span><p>Both deals close and you hand over one property while taking possession of another.</p></div>
+            <div class="blk"><span class="lab">How Vali helps</span><p>Vali keeps the sequence organised across lawyers, movers and utilities, and stays reachable through the handover.</p></div>
+            <div class="blk"><span class="lab">What to prepare</span><p>Movers booked, utilities scheduled at both addresses, and keys and garage remotes gathered for handover.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="journey-panel" id="journey-investor" hidden>
+      <div class="jsteps">
+        <div class="jstep">
+          <button class="jstep-q" aria-expanded="false">
+            <span class="num">01</span>
+            <span class="t">Your Investment Goals</span>
+            <span class="ic" aria-hidden="true"></span>
+          </button>
+          <div class="jstep-a">
+            <div class="blk"><span class="lab">What happens</span><p>We establish whether you are buying for monthly income, long-term appreciation, or a mix, and over what horizon.</p></div>
+            <div class="blk"><span class="lab">How Vali helps</span><p>Vali is direct about what each objective demands in this market, and which property types tend to suit which goal.</p></div>
+            <div class="blk"><span class="lab">What to prepare</span><p>Your target hold period, how involved you want to be, and what return would make this worthwhile.</p></div>
+          </div>
+        </div>
+        <div class="jstep">
+          <button class="jstep-q" aria-expanded="false">
+            <span class="num">02</span>
+            <span class="t">Financing &amp; Cash Reserves</span>
+            <span class="ic" aria-hidden="true"></span>
+          </button>
+          <div class="jstep-a">
+            <div class="blk"><span class="lab">What happens</span><p>Investment financing is assessed, which differs from financing a home you live in.</p></div>
+            <div class="blk"><span class="lab">How Vali helps</span><p>Vali introduces lenders experienced with rental properties and explains typical down payment requirements, qualifying treatment of rental income, and why a reserve matters.</p></div>
+            <div class="blk"><span class="lab">What to prepare</span><p>Corporate or personal structure decided with your accountant, plus proof of down payment and reserves.</p></div>
+          </div>
+        </div>
+        <div class="jstep">
+          <button class="jstep-q" aria-expanded="false">
+            <span class="num">03</span>
+            <span class="t">Identify Suitable Properties</span>
+            <span class="ic" aria-hidden="true"></span>
+          </button>
+          <div class="jstep-a">
+            <div class="blk"><span class="lab">What happens</span><p>We build a shortlist that fits the strategy rather than whatever happens to be listed.</p></div>
+            <div class="blk"><span class="lab">How Vali helps</span><p>Vali screens for tenant demand, condition, zoning and the realistic rent for each unit, and rules out properties whose numbers do not hold up.</p></div>
+            <div class="blk"><span class="lab">What to prepare</span><p>Your buy box: areas, property types, unit count and maximum price.</p></div>
+          </div>
+        </div>
+        <div class="jstep">
+          <button class="jstep-q" aria-expanded="false">
+            <span class="num">04</span>
+            <span class="t">Understand the Numbers</span>
+            <span class="ic" aria-hidden="true"></span>
+          </button>
+          <div class="jstep-a">
+            <div class="blk"><span class="lab">What happens</span><p>Each candidate is modelled on income and expenses rather than list price alone.</p></div>
+            <div class="blk"><span class="lab">How Vali helps</span><p>Vali works through rent, vacancy allowance, taxes, insurance, maintenance, management and financing costs, and shows the cash flow those inputs produce.</p></div>
+            <div class="blk"><span class="lab">What to prepare</span><p>Your financing terms, and any assumptions you want tested.</p></div>
+          </div>
+        </div>
+        <div class="jstep">
+          <button class="jstep-q" aria-expanded="false">
+            <span class="num">05</span>
+            <span class="t">Test Less Favourable Scenarios</span>
+            <span class="ic" aria-hidden="true"></span>
+          </button>
+          <div class="jstep-a">
+            <div class="blk"><span class="lab">What happens</span><p>We rerun the numbers with worse inputs to see what the property does under strain.</p></div>
+            <div class="blk"><span class="lab">How Vali helps</span><p>Vali models lower rent, higher vacancy and higher borrowing costs, so you can see where the deal stops working before you commit.</p></div>
+            <div class="blk"><span class="lab">What to prepare</span><p>A view on how much negative cash flow, if any, you could absorb and for how long.</p></div>
+          </div>
+        </div>
+        <div class="jstep">
+          <button class="jstep-q" aria-expanded="false">
+            <span class="num">06</span>
+            <span class="t">Offer &amp; Property Checks</span>
+            <span class="ic" aria-hidden="true"></span>
+          </button>
+          <div class="jstep-a">
+            <div class="blk"><span class="lab">What happens</span><p>An offer is prepared with conditions suited to an income property.</p></div>
+            <div class="blk"><span class="lab">How Vali helps</span><p>Vali structures the offer around the checks that matter here: inspection, review of leases and rent rolls, and confirmation of permitted use.</p></div>
+            <div class="blk"><span class="lab">What to prepare</span><p>Your lawyer briefed on the purchase, and availability during the condition period.</p></div>
+          </div>
+        </div>
+        <div class="jstep">
+          <button class="jstep-q" aria-expanded="false">
+            <span class="num">07</span>
+            <span class="t">Closing &amp; Rental Operations</span>
+            <span class="ic" aria-hidden="true"></span>
+          </button>
+          <div class="jstep-a">
+            <div class="blk"><span class="lab">What happens</span><p>The deal closes and the property has to start operating.</p></div>
+            <div class="blk"><span class="lab">How Vali helps</span><p>Vali coordinates closing, and helps with the handover of existing tenancies or with getting the unit ready and leased where it is vacant.</p></div>
+            <div class="blk"><span class="lab">What to prepare</span><p>Decision on self-managing or hiring a manager, plus insurance suited to a rental property.</p></div>
+          </div>
+        </div>
+        <div class="jstep">
+          <button class="jstep-q" aria-expanded="false">
+            <span class="num">08</span>
+            <span class="t">Review Performance &amp; Future Options</span>
+            <span class="ic" aria-hidden="true"></span>
+          </button>
+          <div class="jstep-a">
+            <div class="blk"><span class="lab">What happens</span><p>After a period of operating, actual results are compared against the original model.</p></div>
+            <div class="blk"><span class="lab">How Vali helps</span><p>Vali reviews where reality differed from the projection and what that means for refinancing, improving the property, or acquiring the next one.</p></div>
+            <div class="blk"><span class="lab">What to prepare</span><p>Twelve months of income and expense records for the property.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="journey-panel" id="journey-precon" hidden>
+      <div class="jsteps">
+        <div class="jstep">
+          <button class="jstep-q" aria-expanded="false">
+            <span class="num">01</span>
+            <span class="t">Your Goals &amp; Purchase Timeline</span>
+            <span class="ic" aria-hidden="true"></span>
+          </button>
+          <div class="jstep-a">
+            <div class="blk"><span class="lab">What happens</span><p>We clarify whether this is for your own use, for rental, or for resale, and when you actually need it.</p></div>
+            <div class="blk"><span class="lab">How Vali helps</span><p>Vali explains how pre-construction timelines work, including that occupancy and final closing are separate dates and that delays are common.</p></div>
+            <div class="blk"><span class="lab">What to prepare</span><p>Your intended use, and the earliest and latest dates that would work for you.</p></div>
+          </div>
+        </div>
+        <div class="jstep">
+          <button class="jstep-q" aria-expanded="false">
+            <span class="num">02</span>
+            <span class="t">Compare Projects &amp; Builders</span>
+            <span class="ic" aria-hidden="true"></span>
+          </button>
+          <div class="jstep-a">
+            <div class="blk"><span class="lab">What happens</span><p>Projects are compared on more than the renderings and the launch pricing.</p></div>
+            <div class="blk"><span class="lab">How Vali helps</span><p>Vali reviews builder track records, past delivery timelines, construction quality and location fundamentals, and flags projects he would be cautious about.</p></div>
+            <div class="blk"><span class="lab">What to prepare</span><p>Your preferred areas, and whether you want a condominium, townhome or freehold.</p></div>
+          </div>
+        </div>
+        <div class="jstep">
+          <button class="jstep-q" aria-expanded="false">
+            <span class="num">03</span>
+            <span class="t">Understand the Full Cost</span>
+            <span class="ic" aria-hidden="true"></span>
+          </button>
+          <div class="jstep-a">
+            <div class="blk"><span class="lab">What happens</span><p>The purchase price is only part of what you will pay.</p></div>
+            <div class="blk"><span class="lab">How Vali helps</span><p>Vali walks through the deposit schedule, development levies and whether they are capped, occupancy fees, assignment fees and closing costs, so the total is clear at the outset.</p></div>
+            <div class="blk"><span class="lab">What to prepare</span><p>Confirmation of how much you can put down across the deposit schedule, not just at signing.</p></div>
+          </div>
+        </div>
+        <div class="jstep">
+          <button class="jstep-q" aria-expanded="false">
+            <span class="num">04</span>
+            <span class="t">Choose the Right Home or Unit</span>
+            <span class="ic" aria-hidden="true"></span>
+          </button>
+          <div class="jstep-a">
+            <div class="blk"><span class="lab">What happens</span><p>Within a project, specific units perform differently.</p></div>
+            <div class="blk"><span class="lab">How Vali helps</span><p>Vali advises on floor plan, exposure, floor level and layout efficiency, since these affect both livability and how the unit resells or rents.</p></div>
+            <div class="blk"><span class="lab">What to prepare</span><p>Your priorities on size, layout, parking and storage.</p></div>
+          </div>
+        </div>
+        <div class="jstep">
+          <button class="jstep-q" aria-expanded="false">
+            <span class="num">05</span>
+            <span class="t">Review the Agreement &amp; Incentives</span>
+            <span class="ic" aria-hidden="true"></span>
+          </button>
+          <div class="jstep-a">
+            <div class="blk"><span class="lab">What happens</span><p>The agreement is reviewed during the statutory cooling-off period.</p></div>
+            <div class="blk"><span class="lab">How Vali helps</span><p>Vali flags the clauses that matter, including assignment rights, levy caps and the builder's ability to change dates, and coordinates with your lawyer for the formal review.</p></div>
+            <div class="blk"><span class="lab">What to prepare</span><p>A real estate lawyer engaged and available within the cooling-off window.</p></div>
+          </div>
+        </div>
+        <div class="jstep">
+          <button class="jstep-q" aria-expanded="false">
+            <span class="num">06</span>
+            <span class="t">Track Construction &amp; Prepare Financing</span>
+            <span class="ic" aria-hidden="true"></span>
+          </button>
+          <div class="jstep-a">
+            <div class="blk"><span class="lab">What happens</span><p>The project is built over a period of years while you prepare to complete.</p></div>
+            <div class="blk"><span class="lab">How Vali helps</span><p>Vali passes on builder updates and reminds you of deposit dates, and works with your lender well ahead of closing since approval must be current at that time.</p></div>
+            <div class="blk"><span class="lab">What to prepare</span><p>Deposit funds available on schedule, and finances kept stable ahead of final approval.</p></div>
+          </div>
+        </div>
+        <div class="jstep">
+          <button class="jstep-q" aria-expanded="false">
+            <span class="num">07</span>
+            <span class="t">Inspection &amp; Occupancy Preparation</span>
+            <span class="ic" aria-hidden="true"></span>
+          </button>
+          <div class="jstep-a">
+            <div class="blk"><span class="lab">What happens</span><p>You inspect the unit before taking occupancy and note deficiencies.</p></div>
+            <div class="blk"><span class="lab">How Vali helps</span><p>Vali explains the pre-delivery inspection, what to document, and how occupancy fees work in the interim period before final closing.</p></div>
+            <div class="blk"><span class="lab">What to prepare</span><p>Time set aside for the inspection, and a careful record of anything incomplete or damaged.</p></div>
+          </div>
+        </div>
+        <div class="jstep">
+          <button class="jstep-q" aria-expanded="false">
+            <span class="num">08</span>
+            <span class="t">Final Closing &amp; Ownership Plan</span>
+            <span class="ic" aria-hidden="true"></span>
+          </button>
+          <div class="jstep-a">
+            <div class="blk"><span class="lab">What happens</span><p>Title transfers, your mortgage funds, and the unit becomes yours.</p></div>
+            <div class="blk"><span class="lab">How Vali helps</span><p>Vali coordinates final closing with your lender and lawyer, and helps you decide whether to move in, lease it out or sell.</p></div>
+            <div class="blk"><span class="lab">What to prepare</span><p>Final closing costs ready, and a decision on how you intend to use the unit.</p></div>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <div style="text-align:center">
-      <a href="#contact" class="btn btn-primary">Download the Buyer's Guide PDF</a>
+    <div style="text-align:center;margin-top:8px">
+      <a href="#evaluation" class="btn btn-primary">Book a Buyer Consultation</a>
     </div>
   </div>
 </section>
@@ -2388,59 +2998,67 @@ body.mnav-lock{overflow:hidden}
     <div class="seller-grid">
       <div class="seller-photo reveal">
         <div class="main">
-          <img src="https://images.unsplash.com/photo-1600210491892-03d54c0aaf87?w=1100&auto=format&q=80&fit=crop" alt="Beautifully staged living room" loading="lazy" decoding="async">
+          <img src="https://images.unsplash.com/photo-1600210491892-03d54c0aaf87?w=1100&auto=format&q=80&fit=crop" alt="Prepared living room ready for photography" loading="lazy" decoding="async">
         </div>
         <div class="stat-card">
-          <div class="num">+11.4%</div>
-          <div class="lab">Above asking</div>
-          <div class="desc">Average sale price over list across Vali's 2025 seller transactions.</div>
+          <div class="num">$350M+</div>
+          <div class="lab">Sold since 2015</div>
+          <div class="desc">Across residential, commercial and pre-construction transactions.</div>
         </div>
       </div>
       <div class="seller-content reveal">
         <span class="eyebrow">No.05 · Sellers</span>
         <h2 style="margin:18px 0 22px">A launch, <em style="color:var(--gold-deep);font-style:italic">not a listing</em>.</h2>
-        <p class="lede" style="margin-bottom:22px">Most agents post a property and pray. Vali launches it. A pricing strategy, a prep plan, professional photography and video, a thirty day calendar, and a coordinated showing schedule. The goal is not to sell. The goal is to sell well.</p>
+        <p class="lede" style="margin-bottom:22px">Preparation and launch dates are set around your property and agreed with you, not fixed to a template. Once the home is live, we watch how the market responds and adjust together. Every timeline below reflects that.</p>
         <div class="timeline">
-          <div class="tl-item active">
-            <div class="day">Day 1 to 3</div>
+          <div class="tl-item">
+            <div class="day">Before Listing</div>
             <div class="title">Strategy &amp; Pricing</div>
-            <div class="desc">Comparable sales analysis. Pricing model. Recommended improvements.</div>
-          </div>
-          <div class="tl-item active">
-            <div class="day">Day 4 to 8</div>
-            <div class="title">Prep, Stage, Capture</div>
-            <div class="desc">Light staging coordination. Professional photography, drone, walk-through video.</div>
+            <div class="desc">Comparable sales reviewed, a pricing approach agreed with you, and any improvements worth doing identified before we go to market.</div>
           </div>
           <div class="tl-item">
-            <div class="day">Day 9 to 11</div>
-            <div class="title">Pre-Market Tease</div>
-            <div class="desc">Coming-soon push to network and Vali's qualified buyer database.</div>
+            <div class="day">Before Listing</div>
+            <div class="title">Prepare, Stage &amp; Capture</div>
+            <div class="desc">Preparation scheduled around your property and your availability. Professional photography, video and floor plans once the home is ready.</div>
           </div>
           <div class="tl-item">
-            <div class="day">Day 12</div>
-            <div class="title">Public Launch</div>
-            <div class="desc">MLS goes live. Boosted social. Email campaign to local area network.</div>
+            <div class="day">Agreed With You</div>
+            <div class="title">Launch</div>
+            <div class="desc">The launch date is set with you rather than fixed to a template. Pre-market outreach where it suits the property, then the listing goes live across MLS and paid channels.</div>
           </div>
           <div class="tl-item">
-            <div class="day">Day 13 to 19</div>
-            <div class="title">Showings &amp; Open Houses</div>
-            <div class="desc">Coordinated showings, weekend opens, weekly seller report.</div>
+            <div class="day">Ongoing</div>
+            <div class="title">Monitor Market Response</div>
+            <div class="desc">Showing activity, online engagement and buyer feedback are tracked from day one and reported to you regularly, so you can see how the market is actually responding.</div>
           </div>
           <div class="tl-item">
-            <div class="day">Day 20 to 25</div>
-            <div class="title">Offer Review</div>
-            <div class="desc">Multi-offer scenarios analyzed line by line, not just price.</div>
+            <div class="day">Ongoing</div>
+            <div class="title">Adjust the Approach</div>
+            <div class="desc">If the response is not what we expected, we discuss it and agree what changes. That might mean price, photography, access hours or how the property is marketed.</div>
           </div>
           <div class="tl-item">
-            <div class="day">Day 26 to 30</div>
-            <div class="title">Firm Sale &amp; Handover</div>
-            <div class="desc">Conditions cleared, lawyers coordinated, keys handed over.</div>
+            <div class="day">As They Arrive</div>
+            <div class="title">Review &amp; Negotiate Offers</div>
+            <div class="desc">Offers are reviewed and negotiated as they come in. Price is one part of it, alongside conditions, deposit, and the closing date that works for you.</div>
+          </div>
+          <div class="tl-item">
+            <div class="day">Per the Agreement</div>
+            <div class="title">Conditions &amp; Deadlines</div>
+            <div class="desc">Once an agreement is accepted, condition and closing deadlines follow that agreement. Vali tracks each date and coordinates the lawyers and lenders through to firm.</div>
+          </div>
+          <div class="tl-item">
+            <div class="day">At Closing</div>
+            <div class="title">Closing &amp; Handover</div>
+            <div class="desc">Final walkthrough arrangements, key handover and coordination between both lawyers so closing day is straightforward.</div>
           </div>
         </div>
         <div style="margin-top:34px;display:flex;gap:14px;flex-wrap:wrap">
           <a href="#evaluation" class="btn btn-primary">Get Your Free Evaluation</a>
-          <a href="#sellers" class="btn btn-ghost">Download Seller Playbook</a>
+          <a href="seller-playbook.pdf" class="btn btn-ghost" download>Download Seller Playbook</a>
         </div>
+        <p style="font-size:12px;color:var(--muted);margin-top:16px;line-height:1.6">
+          Timing depends on the property, its preparation and current market conditions. Nothing above is a guarantee of a sale within any particular period.
+        </p>
       </div>
     </div>
   </div>
@@ -2477,8 +3095,9 @@ body.mnav-lock{overflow:hidden}
           </div>
         </div>
         <div style="margin-top:34px;display:flex;gap:14px;flex-wrap:wrap">
-          <a href="#contact" class="btn btn-primary">Request Investor Brief</a>
-          <a href="#contact" class="btn-text">Pre-Construction Shortlist</a>
+          <button type="button" class="btn btn-primary" data-inv-open="Investor Brief">Request Investor Brief</button>
+          <button type="button" class="btn btn-ghost" data-inv-open="Pre-Construction Shortlist">Pre-Construction Shortlist</button>
+          <button type="button" class="btn btn-ghost" data-inv-open="Investment Consultation">Book an Investment Consultation</button>
         </div>
       </div>
       <div class="invest-photo reveal">
@@ -2486,6 +3105,79 @@ body.mnav-lock{overflow:hidden}
         <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1100&auto=format&q=80&fit=crop" alt="Modern condo development rendering" loading="lazy" decoding="async">
       </div>
     </div>
+
+    <!-- Fictional worked example -->
+    <div class="plaza reveal">
+      <div class="plaza-head">
+        <span class="plaza-flag">Fictional Illustration</span>
+        <h3>How an eight-unit neighbourhood retail plaza is evaluated</h3>
+        <p>A worked example showing how commercial numbers are assessed before an offer. This is a teaching illustration only. It is not an available property, not a financing quote, and not a projected return.</p>
+      </div>
+
+      <div class="plaza-body">
+        <div class="plaza-cols">
+
+          <div class="plaza-block">
+            <h4>Capital Required at Purchase</h4>
+          <div class="plaza-line"><span class="l">Purchase price</span><span class="v">$4,000,000</span></div>
+          <div class="plaza-line"><span class="l">Assumed down payment</span><span class="v">$1,400,000</span></div>
+          <div class="plaza-line"><span class="l">Mortgage amount</span><span class="v">$2,600,000</span></div>
+          <div class="plaza-line"><span class="l">Purchase costs and due diligence</span><span class="v">$100,000</span></div>
+          <div class="plaza-line"><span class="l">Initial capital and leasing reserve</span><span class="v">$150,000</span></div>
+            <div class="plaza-line total"><span class="l">Total Initial Cash Required</span><span class="v">$1,650,000</span></div>
+
+            <h4 style="margin-top:34px">Annual Income</h4>
+          <div class="plaza-line"><span class="l">Scheduled base rent</span><span class="v">$440,000</span></div>
+          <div class="plaza-line"><span class="l">Tenant expense recoveries</span><span class="v">$120,000</span></div>
+          <div class="plaza-line"><span class="l">Vacancy and collection allowance</span><span class="v neg">&minus;$28,000</span></div>
+            <div class="plaza-line sub"><span class="l">Effective Income</span><span class="v">$532,000</span></div>
+          </div>
+
+          <div class="plaza-block">
+            <h4>Annual Operating Expenses</h4>
+          <div class="plaza-line"><span class="l">Property taxes</span><span class="v neg">&minus;$65,000</span></div>
+          <div class="plaza-line"><span class="l">Insurance</span><span class="v neg">&minus;$18,000</span></div>
+          <div class="plaza-line"><span class="l">Maintenance, snow removal, landscaping</span><span class="v neg">&minus;$32,000</span></div>
+          <div class="plaza-line"><span class="l">Common-area utilities</span><span class="v neg">&minus;$12,000</span></div>
+          <div class="plaza-line"><span class="l">Management and administration</span><span class="v neg">&minus;$25,000</span></div>
+            <div class="plaza-line sub"><span class="l">Net Operating Income Before Financing</span><span class="v">$380,000</span></div>
+
+            <h4 style="margin-top:34px">Financing and Reserves</h4>
+          <div class="plaza-line"><span class="l">Illustrative mortgage payments</span><span class="v neg">&minus;$228,000</span></div>
+          <div class="plaza-line"><span class="l">Capital and leasing reserve contribution</span><span class="v neg">&minus;$30,000</span></div>
+            <div class="plaza-line total"><span class="l">Estimated Annual Cash Flow Before Tax</span><span class="v">$122,000</span></div>
+            <p style="font-size:13px;color:var(--muted);margin-top:10px;text-align:right">Approximately <strong style="color:var(--ink)">$10,167</strong> per month</p>
+          </div>
+        </div>
+
+        <div class="plaza-metrics">
+          <div class="plaza-metric"><div class="n">9.5%</div><div class="l">Illustrative<br>Cap Rate</div></div>
+          <div class="plaza-metric"><div class="n">7.4%</div><div class="l">Illustrative<br>Cash-on-Cash</div></div>
+          <div class="plaza-metric"><div class="n">1.67&times;</div><div class="l">Debt-Service<br>Coverage</div></div>
+          <div class="plaza-metric"><div class="n">$122K</div><div class="l">Annual Cash Flow<br>Before Tax</div></div>
+        </div>
+
+        <div class="plaza-stress">
+          <h4>If conditions are less favourable</h4>
+          <div class="row"><span class="l">Effective income falls 10 percent</span><span class="v">$68,800</span></div>
+          <div class="row"><span class="l">Mortgage payments rise 15 percent</span><span class="v">$87,800</span></div>
+          <div class="row"><span class="l">Both happen together</span><span class="v">$34,600</span></div>
+        </div>
+
+        <div class="plaza-disc">
+          <strong>Important</strong>
+          This is a fictional illustration prepared to show how a commercial property is analysed. It is not an available property, not a financing quote, and not an expected or promised return.
+          The figures assume a fully leased eight-unit plaza with tenants contributing to recoverable operating costs, a vacancy and collection allowance of roughly five percent of gross income, and mortgage payments based on an assumed rate and amortisation that are not quoted here and would differ from any real offer.
+          Actual results depend on the specific property, its leases and tenant covenants, the condition of the building, prevailing interest rates at the time of financing, property taxes as assessed, and market conditions. Capitalisation rate, cash-on-cash return and debt-service coverage are shown as calculated from the figures above and are not benchmarks or targets.
+          Nothing here is financial, tax, legal or investment advice. Any real purchase should be reviewed with your own accountant, lawyer and mortgage professional.
+        </div>
+      </div>
+
+      <div class="plaza-foot">
+        <button type="button" class="btn btn-primary" data-inv-open="Commercial Investment Property">Discuss an Investment Property With Vali</button>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -2512,7 +3204,7 @@ body.mnav-lock{overflow:hidden}
     <!-- Ledger band -->
     <div class="sold-ledger-head reveal">
       <div class="cell">
-        <div class="n"><em>$300</em>M+</div>
+        <div class="n"><em>$350</em>M+</div>
         <div class="l">Total Volume Since 2015</div>
       </div>
       <div class="cell">
@@ -2777,7 +3469,7 @@ body.mnav-lock{overflow:hidden}
 
     <div class="idx-compliance">
       Sold and leased properties shown were represented by Vali Mikho of
-      <strong>HomeLife Professionals Realty Inc., Brokerage</strong>.
+      <strong>HomeLife Professionals Realty Brokerage</strong>.
       Information is deemed reliable but is not guaranteed accurate. Past results are not a guarantee of future results.
     </div>
   </div>
@@ -2846,7 +3538,7 @@ body.mnav-lock{overflow:hidden}
         <p class="lede">Vali Mikho began his real estate career in 2015 with a simple conviction: the properties people sell and buy are not transactions to him, they are inflection points in their lives. Since then, he has closed more than three hundred million dollars in residential, commercial, and pre-construction sales across the Hamilton, Burlington, and GTA corridor. That standard holds whether the file is a first home, an income property, or a commercial lease.</p>
         <p class="lede">He works with his clients the way a private banker works with theirs. Slowly when it should be slow. Decisively when it has to be. Always with the math, always with the homework, always in their corner.</p>
         <p class="signature">Vali Mikho</p>
-        <p class="who">Realtor · HomeLife Power Brokerage · Burlington</p>
+        <p class="who">Realtor · HomeLife Professionals Realty Brokerage · Burlington</p>
         <div class="actions">
           <a href="#evaluation" class="btn btn-primary">Book a Conversation</a>
           <a href="tel:9055311046" class="btn btn-light" style="background:transparent;border:1.5px solid rgba(255,255,255,.3);color:#fff">Call 905 531 1046</a>
@@ -2938,7 +3630,7 @@ body.mnav-lock{overflow:hidden}
     <div class="partner-row">
       <div class="lab">Brokerage &amp; Affiliations</div>
       <div class="partners">
-        <span class="p">HomeLife Power Brokerage</span>
+        <span class="p">HomeLife Professionals Realty Brokerage</span>
         <span class="p">Elite Network Affiliate</span>
         <span class="p">CREA · MLS®</span>
       </div>
@@ -2966,17 +3658,120 @@ body.mnav-lock{overflow:hidden}
         <a href="mailto:valimikho@gmail.com" style="color:var(--gold-bright)">valimikho@gmail.com</a>.
       </p>
       <p>
-        Vali Mikho is a licensed real estate salesperson with HomeLife Professionals Realty Inc., Brokerage.
+        Vali Mikho is a licensed real estate salesperson with HomeLife Professionals Realty Brokerage.
         Not intended to solicit properties already under contract with another brokerage.
       </p>
     </div>
 
     <div class="foot-bottom">
-      <span>© 2026 Vali Mikho Real Estate · HomeLife Professionals Realty Inc., Brokerage</span>
+      <span>© 2026 Vali Mikho Real Estate · HomeLife Professionals Realty Brokerage</span>
       <span><a href="#privacy" style="color:rgba(255,255,255,.7)">Privacy</a> · <a href="#faq" style="color:rgba(255,255,255,.7)">FAQ</a> · <a href="#contact" style="color:rgba(255,255,255,.7)">Contact</a></span>
     </div>
   </div>
 </footer>
+
+<!-- ============== INVESTOR ENQUIRY MODAL ============== -->
+<div class="inv-modal" id="invModal" role="dialog" aria-modal="true" aria-labelledby="invTitle" aria-hidden="true">
+  <div class="inv-card">
+    <button class="inv-close" id="invClose" aria-label="Close">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+
+    <div id="invFormWrap">
+      <div class="inv-head">
+        <span class="eyebrow">Investor Enquiry</span>
+        <h3 id="invTitle">Request an Investor Brief</h3>
+        <p>Tell Vali what you are looking for and he will call you to discuss your goals. No automated sequences, no list rental.</p>
+      </div>
+      <div class="inv-body">
+        <form id="invForm" novalidate>
+          <input type="hidden" id="invSource" name="requested" value="Investor Brief">
+
+          <div class="inv-row">
+            <div><label for="invName">Name</label><input type="text" id="invName" name="name" required autocomplete="name"></div>
+            <div><label for="invPhone">Phone</label><input type="tel" id="invPhone" name="phone" required autocomplete="tel"></div>
+          </div>
+
+          <label for="invEmail">Email</label>
+          <input type="email" id="invEmail" name="email" required autocomplete="email">
+
+          <div class="inv-row">
+            <div>
+              <label for="invInterest">Investment interest</label>
+              <select id="invInterest" name="interest" required>
+                <option value="">Please choose</option>
+                <option>Pre-construction</option>
+                <option>Cash-flow rental</option>
+                <option>Multi-unit residential</option>
+                <option>Commercial or retail</option>
+                <option>Land or development</option>
+                <option>Not sure yet</option>
+              </select>
+            </div>
+            <div>
+              <label for="invLocation">Preferred location</label>
+              <select id="invLocation" name="location" required>
+                <option value="">Please choose</option>
+                <option>Hamilton</option><option>Ancaster</option><option>Burlington</option>
+                <option>Oakville</option><option>Mississauga</option><option>Guelph</option>
+                <option>Milton</option><option>Toronto</option><option>Niagara region</option>
+                <option>Open to suggestions</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="inv-row">
+            <div>
+              <label for="invBudget">Approximate budget</label>
+              <select id="invBudget" name="budget" required>
+                <option value="">Please choose</option>
+                <option>Under $500,000</option>
+                <option>$500,000 to $1 million</option>
+                <option>$1 million to $2 million</option>
+                <option>$2 million to $5 million</option>
+                <option>Over $5 million</option>
+                <option>Prefer to discuss</option>
+              </select>
+            </div>
+            <div>
+              <label for="invTimeline">Buying timeline</label>
+              <select id="invTimeline" name="timeline" required>
+                <option value="">Please choose</option>
+                <option>Ready now</option>
+                <option>1 to 3 months</option>
+                <option>3 to 6 months</option>
+                <option>6 to 12 months</option>
+                <option>Researching for later</option>
+              </select>
+            </div>
+          </div>
+
+          <label for="invCallTime">Best time to call</label>
+          <select id="invCallTime" name="calltime" required>
+            <option value="">Please choose</option>
+            <option>Weekday mornings</option>
+            <option>Weekday afternoons</option>
+            <option>Weekday evenings</option>
+            <option>Weekends</option>
+            <option>Any time</option>
+          </select>
+
+          <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;margin-top:8px">Send to Vali</button>
+          <p class="inv-note">Your details go directly to Vali Mikho at HomeLife Professionals Realty Brokerage and are used only to respond to this enquiry. They are not sold or shared with third parties. See our <a href="#privacy" style="color:var(--gold-deep)">privacy policy</a>.</p>
+        </form>
+      </div>
+    </div>
+
+    <div class="inv-success" id="invSuccess">
+      <div class="tick">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#B8924E" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <h3>Thank you. Your enquiry is on its way.</h3>
+      <p>Vali will contact you to discuss your investment goals and answer your questions. If you would rather speak sooner, call him directly.</p>
+      <a href="tel:9055311046" class="btn btn-primary">Call 905 531 1046</a>
+    </div>
+  </div>
+</div>
 
 <!-- ============== MOBILE NAV OVERLAY ============== -->
 <div class="mnav" id="mnav" role="dialog" aria-modal="true" aria-label="Site menu" aria-hidden="true">
@@ -3027,7 +3822,7 @@ const io=new IntersectionObserver((es)=>{
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
 // Filter pills (class toggle)
-document.querySelectorAll('.listing-filters button, .journey-pills button').forEach(b=>{
+document.querySelectorAll('.listing-filters button').forEach(b=>{
   b.addEventListener('click',()=>{
     const sib=b.parentElement.querySelectorAll('button');
     sib.forEach(x=>x.classList.remove('on'));
@@ -3035,74 +3830,140 @@ document.querySelectorAll('.listing-filters button, .journey-pills button').forE
   });
 });
 
-// ============== BUYER JOURNEY CONTENT PER TYPE ==============
-// Each buyer type gets its own eight steps. Edit copy here.
-(function(){
-  var track=document.getElementById('journeyTrack');
-  if(!track) return;
-  var steps=track.querySelectorAll('.j-step');
+  // ============== BUYER JOURNEY PANELS ==============
+  (function () {
+    var pills = Array.prototype.slice.call(document.querySelectorAll('.journey-pills button'));
+    if (!pills.length) return;
 
-  var JOURNEYS={
-    first:[
-      {t:'Discovery Call',d:'Thirty minutes on budget, timing, and neighbourhoods. Vali explains the entire process in plain language before any paperwork.'},
-      {t:'Pre-Approval & Incentives',d:'Trusted mortgage advisors get you a real number, and Vali walks you through land transfer tax rebates and every first-time buyer program you qualify for.'},
-      {t:'Search Setup',d:'Custom MLS feed with your criteria. New listings hit your inbox within minutes of going live, not days later.'},
-      {t:'Showings & Tours',d:'Vali tours with you and teaches you what to look for: mechanicals, layout, and resale value, not just paint and staging.'},
-      {t:'Offer Strategy',d:'Comparable sales analysis and conditions that protect a first purchase, like financing and inspection. You never overpay out of fear.'},
-      {t:'Negotiation',d:'Your first negotiation is Vali\'s five hundredth. He handles the pressure tactics so you never bid blind.'},
-      {t:'Inspection & Conditions',d:'Vetted home inspector, lawyer, insurer. Deposits, closing costs, and timelines explained step by step, nothing assumed.'},
-      {t:'Closing & Beyond',d:'Keys delivered, moving checklist sent, and first-year check-ins. Vali stays in your corner long after your first closing.'}
-    ],
-    moveup:[
-      {t:'Strategy Session',d:'Sell first or buy first. Vali maps your equity position, timing risk, and bridge financing options before anything hits the market.'},
-      {t:'Equity & Financing',d:'A real evaluation of your current home, then the mortgage math: porting versus new financing, and what your true buying power is.'},
-      {t:'Coordinated Search',d:'Your next home search runs while your current home is prepped for market, so neither side of the move waits on the other.'},
-      {t:'Sharper Showings',d:'You have owned a home and know the basics. Tours focus on what the next decade needs: space, schools, commute, and resale.'},
-      {t:'Offer & Timing',d:'Offers structured around your sale, closing dates aligned, and conditions that protect both transactions at once.'},
-      {t:'Negotiating Two Deals',d:'Maximizing the sale price on one side while holding the line on the purchase. Vali runs both files so they never work against each other.'},
-      {t:'Dual Due Diligence',d:'Inspections, lawyers, and financing on two transactions, project-managed on one calendar.'},
-      {t:'One Moving Day',d:'Both closings sequenced so you move once, not twice, and never carry two mortgages longer than planned.'}
-    ],
-    investor:[
-      {t:'Investor Intake',d:'Cash flow or appreciation, one door or five. We define the goal, the capital, and the timeline before looking at a single listing.'},
-      {t:'Financing Structure',d:'Rental financing rules, down payment requirements, and how lenders treat rental income, mapped out with investor-savvy mortgage advisors.'},
-      {t:'Deal Flow',d:'An MLS feed tuned to investor metrics, plus off-market opportunities surfaced through eleven years of local relationships.'},
-      {t:'Running the Numbers',d:'Cap rate, cash-on-cash return, and realistic rents and expenses on every candidate. When the math does not work, Vali says so.'},
-      {t:'Offer Strategy',d:'Offers negotiated on the numbers, with conditions built around financing and due diligence rather than emotion.'},
-      {t:'Due Diligence',d:'Building condition, tenant and lease review where applicable, plus zoning and bylaw checks before anything firms up.'},
-      {t:'Closing & Setup',d:'Lawyer, insurance, and property management referrals so the asset is tenant-ready from day one.'},
-      {t:'Portfolio Review',d:'An annual check-in on every property: refinance, hold, or trade up. The plan does not end at closing.'}
-    ],
-    precon:[
-      {t:'Project Shortlist',d:'Not every launch deserves your deposit. Vali shortlists projects by builder track record, location fundamentals, and pricing versus resale.'},
-      {t:'The Math First',d:'Deposit structure, projected closing costs, development charges, and assignment rules, all on paper before the model suite visit.'},
-      {t:'Platinum Access',d:'Builder relationships mean earlier allocations and better unit selection, often before the public launch.'},
-      {t:'Unit Selection',d:'Floor plan, level, and exposure chosen with future resale and rentability in mind, not just the view.'},
-      {t:'Worksheet & Incentives',d:'Your worksheet submitted and incentives negotiated: capped levies, assignment rights, and leasing permission during occupancy.'},
-      {t:'The 10-Day Review',d:'Ontario\'s cooling-off period, used properly. A real estate lawyer reviews the purchase agreement before you are locked in.'},
-      {t:'Interim Occupancy',d:'Occupancy fees explained, leasing during occupancy handled if permitted, and final closing costs prepared well ahead.'},
-      {t:'Final Closing & Exit',d:'Close and hold, lease it out, or assign. The exit strategy is set against the market at completion, not guessed at signing.'}
-    ]
-  };
-
-  document.querySelectorAll('.journey-pills button').forEach(function(b){
-    b.addEventListener('click',function(){
-      var set=JOURNEYS[b.getAttribute('data-journey')];
-      if(!set) return;
-      track.classList.add('swapping');
-      setTimeout(function(){
-        steps.forEach(function(el,i){
-          if(!set[i]) return;
-          var h=el.querySelector('h4'), p=el.querySelector('p');
-          if(h) h.textContent=set[i].t;
-          if(p) p.textContent=set[i].d;
-          el.classList.add('in');
+    pills.forEach(function (pill) {
+      pill.addEventListener('click', function () {
+        var key = pill.getAttribute('data-journey');
+        pills.forEach(function (p) {
+          var on = p === pill;
+          p.classList.toggle('on', on);
+          p.setAttribute('aria-expanded', on ? 'true' : 'false');
         });
-        track.classList.remove('swapping');
-      },180);
+        document.querySelectorAll('.journey-panel').forEach(function (panel) {
+          var on = panel.id === 'journey-' + key;
+          panel.classList.toggle('active', on);
+          if (on) { panel.removeAttribute('hidden'); }
+          else { panel.setAttribute('hidden', ''); }
+          // Collapse any open steps when switching buyer type
+          panel.querySelectorAll('.jstep.open').forEach(function (st) {
+            st.classList.remove('open');
+            var q = st.querySelector('.jstep-q');
+            if (q) q.setAttribute('aria-expanded', 'false');
+          });
+        });
+      });
     });
-  });
-})();
+
+    // Expandable steps, one open at a time within a panel
+    document.querySelectorAll('.jstep-q').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var step = btn.closest('.jstep');
+        var panel = btn.closest('.journey-panel');
+        var wasOpen = step.classList.contains('open');
+        if (panel) {
+          panel.querySelectorAll('.jstep').forEach(function (s) {
+            s.classList.remove('open');
+            var q = s.querySelector('.jstep-q');
+            if (q) q.setAttribute('aria-expanded', 'false');
+          });
+        }
+        if (!wasOpen) {
+          step.classList.add('open');
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+  })();
+
+  // ============== INVESTOR ENQUIRY MODAL ==============
+  (function () {
+    var modal = document.getElementById('invModal');
+    if (!modal) return;
+    var card = modal.querySelector('.inv-card');
+    var form = document.getElementById('invForm');
+    var wrap = document.getElementById('invFormWrap');
+    var success = document.getElementById('invSuccess');
+    var srcField = document.getElementById('invSource');
+    var title = document.getElementById('invTitle');
+    var lastFocus = null;
+
+    var TITLES = {
+      'Investor Brief': 'Request an Investor Brief',
+      'Pre-Construction Shortlist': 'Request the Pre-Construction Shortlist',
+      'Investment Consultation': 'Book an Investment Consultation',
+      'Commercial Investment Property': 'Discuss an Investment Property'
+    };
+
+    function open(source) {
+      lastFocus = document.activeElement;
+      if (srcField) srcField.value = source || 'Investor Brief';
+      if (title) title.textContent = TITLES[source] || 'Investor Enquiry';
+      wrap.style.display = '';
+      success.classList.remove('show');
+      modal.classList.add('open');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('inv-lock');
+      var first = form ? form.querySelector('input') : null;
+      if (first) setTimeout(function () { first.focus(); }, 120);
+    }
+    function close() {
+      modal.classList.remove('open');
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('inv-lock');
+      if (lastFocus) lastFocus.focus();
+    }
+
+    document.querySelectorAll('[data-inv-open]').forEach(function (btn) {
+      btn.addEventListener('click', function () { open(btn.getAttribute('data-inv-open')); });
+    });
+    var closeBtn = document.getElementById('invClose');
+    if (closeBtn) closeBtn.addEventListener('click', close);
+    modal.addEventListener('click', function (e) { if (e.target === modal) close(); });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && modal.classList.contains('open')) close();
+    });
+
+    if (form) {
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var required = form.querySelectorAll('[required]');
+        var missing = false;
+        required.forEach(function (f) {
+          if (!f.value || !String(f.value).trim()) {
+            f.style.borderColor = 'var(--rose)';
+            missing = true;
+          } else {
+            f.style.borderColor = '';
+          }
+        });
+        if (missing) return;
+
+        var LABELS = {
+          requested: 'Requested', name: 'Name', phone: 'Phone', email: 'Email',
+          interest: 'Investment interest', location: 'Preferred location',
+          budget: 'Approximate budget', timeline: 'Buying timeline', calltime: 'Best time to call'
+        };
+        var lines = ['Investor enquiry from valimikho.com', ''];
+        ['requested','name','phone','email','interest','location','budget','timeline','calltime'].forEach(function (k) {
+          var f = form.querySelector('[name="' + k + '"]');
+          if (f && f.value) lines.push(LABELS[k] + ': ' + f.value);
+        });
+
+        window.location.href = 'mailto:valimikho@gmail.com'
+          + '?subject=' + encodeURIComponent('Investor enquiry: ' + (srcField ? srcField.value : ''))
+          + '&body=' + encodeURIComponent(lines.join('\n'));
+
+        wrap.style.display = 'none';
+        success.classList.add('show');
+        if (card) card.scrollIntoView({ block: 'center' });
+      });
+    }
+  })();
+
 
 // Mobile menu (basic)
 document.querySelector('.menu-btn')?.addEventListener('click',()=>{
