@@ -1483,6 +1483,7 @@ body.mnav-lock{overflow:hidden}
   display:block;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;
   font-weight:700;color:var(--muted);margin-bottom:6px;
 }
+.inv-body textarea{resize:vertical;min-height:76px;line-height:1.55}
 .inv-body input,.inv-body select,.inv-body textarea{
   width:100%;padding:13px 15px;margin-bottom:16px;
   border:1px solid var(--line);border-radius:var(--r-sm);
@@ -1498,6 +1499,7 @@ body.mnav-lock{overflow:hidden}
 .inv-body select option{background:#fff;color:var(--ink)}
 .inv-body input:focus,.inv-body select:focus,.inv-body textarea:focus{border-color:var(--gold)}
 .inv-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.inv-body [hidden]{display:none!important}
 .inv-note{font-size:11.5px;color:var(--hush);line-height:1.6;margin-top:6px}
 .inv-success{
   display:none;padding:44px 34px;text-align:center;
@@ -1714,7 +1716,7 @@ body.inv-lock{overflow:hidden}
     </div>
     <h1>Buy. Sell. <em>Invest.</em></h1>
     <div class="hero-tagline">With Confidence</div>
-    <p class="hero-sub">Eleven years closing the most consequential financial decisions of your life. Three hundred million in sales. Five hundred families. One advisor who treats every transaction like the only one that matters, because to you, it is.</p>
+    <p class="hero-sub">Eleven years closing the most consequential financial decisions of your life. Over three hundred and fifty million in sales. Five hundred families. One advisor who treats every transaction like the only one that matters, because to you, it is.</p>
     <div class="hero-actions">
       <a href="#evaluation" class="btn btn-primary">Get Your Home Valued · Free</a>
       <a href="#listings" class="btn btn-light">Browse Active Listings</a>
@@ -2987,7 +2989,7 @@ body.inv-lock{overflow:hidden}
     </div>
 
     <div style="text-align:center;margin-top:8px">
-      <a href="#evaluation" class="btn btn-primary">Book a Buyer Consultation</a>
+      <button type="button" class="btn btn-primary" data-inv-open="Buyer Consultation">Book a Buyer Consultation</button>
     </div>
   </div>
 </section>
@@ -3054,7 +3056,7 @@ body.inv-lock{overflow:hidden}
         </div>
         <div style="margin-top:34px;display:flex;gap:14px;flex-wrap:wrap">
           <a href="#evaluation" class="btn btn-primary">Get Your Free Evaluation</a>
-          <a href="seller-playbook.pdf" class="btn btn-ghost" download>Download Seller Playbook</a>
+          <a href="seller-playbook.pdf" class="btn btn-ghost" target="_blank" rel="noopener">Download Seller Playbook</a>
         </div>
         <p style="font-size:12px;color:var(--muted);margin-top:16px;line-height:1.6">
           Timing depends on the property, its preparation and current market conditions. Nothing above is a guarantee of a sale within any particular period.
@@ -3535,7 +3537,7 @@ body.inv-lock{overflow:hidden}
       <div class="av-content reveal">
         <span class="eyebrow" style="color:var(--gold-bright)">No.11 · About Vali</span>
         <h2>Eleven years. <em>Five hundred families.</em> One standard.</h2>
-        <p class="lede">Vali Mikho began his real estate career in 2015 with a simple conviction: the properties people sell and buy are not transactions to him, they are inflection points in their lives. Since then, he has closed more than three hundred million dollars in residential, commercial, and pre-construction sales across the Hamilton, Burlington, and GTA corridor. That standard holds whether the file is a first home, an income property, or a commercial lease.</p>
+        <p class="lede">Vali Mikho began his real estate career in 2015 with a simple conviction: the properties people sell and buy are not transactions to him, they are inflection points in their lives. Since then, he has closed more than three hundred and fifty million dollars in residential, commercial, and pre-construction sales across the Hamilton, Burlington, and GTA corridor. That standard holds whether the file is a first home, an income property, or a commercial lease.</p>
         <p class="lede">He works with his clients the way a private banker works with theirs. Slowly when it should be slow. Decisively when it has to be. Always with the math, always with the homework, always in their corner.</p>
         <p class="signature">Vali Mikho</p>
         <p class="who">Realtor · HomeLife Professionals Realty Brokerage · Burlington</p>
@@ -3610,7 +3612,7 @@ body.inv-lock{overflow:hidden}
         <ul>
           <li><a href="#evaluation">Home Evaluation</a></li>
           <li><a href="#buyers">Buyer Guide PDF</a></li>
-          <li><a href="#sellers">Seller Playbook</a></li>
+          <li><a href="seller-playbook.pdf" target="_blank" rel="noopener">Seller Playbook</a></li>
           <li><a href="#neighbourhoods">Neighbourhood Quiz</a></li>
           <li><a href="#evaluation">Listing Alerts</a></li>
           <li><a href="#faq">Monthly Market Report</a></li>
@@ -3695,19 +3697,72 @@ body.inv-lock{overflow:hidden}
           <label for="invEmail">Email</label>
           <input type="email" id="invEmail" name="email" required autocomplete="email">
 
-          <div class="inv-row">
-            <div>
-              <label for="invInterest">Investment interest</label>
-              <select id="invInterest" name="interest" required>
-                <option value="">Please choose</option>
-                <option>Pre-construction</option>
-                <option>Cash-flow rental</option>
-                <option>Multi-unit residential</option>
-                <option>Commercial or retail</option>
-                <option>Land or development</option>
-                <option>Not sure yet</option>
-              </select>
+          <!-- Buyer-specific fields -->
+          <div class="fld-buyer" hidden>
+            <div class="inv-row">
+              <div>
+                <label for="buyType">What are you looking to buy?</label>
+                <select id="buyType" name="buytype">
+                  <option value="">Please choose</option>
+                  <option>Detached house</option>
+                  <option>Semi-detached</option>
+                  <option>Townhome</option>
+                  <option>Condo apartment</option>
+                  <option>Multi-unit</option>
+                  <option>Not sure yet</option>
+                </select>
+              </div>
+              <div>
+                <label for="buyStage">Where are you in the process?</label>
+                <select id="buyStage" name="buystage">
+                  <option value="">Please choose</option>
+                  <option>Just starting to look</option>
+                  <option>Actively viewing homes</option>
+                  <option>Pre-approved and ready</option>
+                  <option>Need to sell first</option>
+                  <option>First home, need guidance</option>
+                </select>
+              </div>
             </div>
+            <div class="inv-row">
+              <div>
+                <label for="buyBeds">Bedrooms needed</label>
+                <select id="buyBeds" name="buybeds">
+                  <option value="">Please choose</option>
+                  <option>1 to 2</option><option>3</option><option>4</option>
+                  <option>5 or more</option><option>Flexible</option>
+                </select>
+              </div>
+              <div>
+                <label for="buyMove">Ideal move date</label>
+                <select id="buyMove" name="buymove">
+                  <option value="">Please choose</option>
+                  <option>As soon as possible</option>
+                  <option>Within 3 months</option>
+                  <option>3 to 6 months</option>
+                  <option>6 to 12 months</option>
+                  <option>Flexible</option>
+                </select>
+              </div>
+            </div>
+            <label for="buyNotes">Anything else Vali should know (optional)</label>
+            <textarea id="buyNotes" name="buynotes" rows="3" placeholder="Schools, commute, must-haves, or questions you have"></textarea>
+          </div>
+
+          <div class="fld-inv">
+            <label for="invInterest">Investment interest</label>
+            <select id="invInterest" name="interest" required>
+              <option value="">Please choose</option>
+              <option>Pre-construction</option>
+              <option>Cash-flow rental</option>
+              <option>Multi-unit residential</option>
+              <option>Commercial or retail</option>
+              <option>Land or development</option>
+              <option>Not sure yet</option>
+            </select>
+          </div>
+
+          <div>
             <div>
               <label for="invLocation">Preferred location</label>
               <select id="invLocation" name="location" required>
@@ -3720,7 +3775,7 @@ body.inv-lock{overflow:hidden}
             </div>
           </div>
 
-          <div class="inv-row">
+          <div class="inv-row fld-inv">
             <div>
               <label for="invBudget">Approximate budget</label>
               <select id="invBudget" name="budget" required>
@@ -3744,6 +3799,20 @@ body.inv-lock{overflow:hidden}
                 <option>Researching for later</option>
               </select>
             </div>
+          </div>
+
+          <div class="fld-buyer" hidden>
+            <label for="buyBudget">Approximate budget</label>
+            <select id="buyBudget" name="buybudget">
+              <option value="">Please choose</option>
+              <option>Under $600,000</option>
+              <option>$600,000 to $800,000</option>
+              <option>$800,000 to $1.1 million</option>
+              <option>$1.1 million to $1.5 million</option>
+              <option>$1.5 million to $2 million</option>
+              <option>Over $2 million</option>
+              <option>Prefer to discuss</option>
+            </select>
           </div>
 
           <label for="invCallTime">Best time to call</label>
@@ -3891,17 +3960,43 @@ document.querySelectorAll('.listing-filters button').forEach(b=>{
     var title = document.getElementById('invTitle');
     var lastFocus = null;
 
-    var TITLES = {
-      'Investor Brief': 'Request an Investor Brief',
-      'Pre-Construction Shortlist': 'Request the Pre-Construction Shortlist',
-      'Investment Consultation': 'Book an Investment Consultation',
-      'Commercial Investment Property': 'Discuss an Investment Property'
+    var MODES = {
+      'Investor Brief':                 {mode:'inv',   title:'Request an Investor Brief',           blurb:'Tell Vali what you are looking for and he will call you to discuss your goals. No automated sequences, no list rental.'},
+      'Pre-Construction Shortlist':     {mode:'inv',   title:'Request the Pre-Construction Shortlist', blurb:'Tell Vali what you are looking for and he will call you to discuss current and upcoming projects.'},
+      'Investment Consultation':        {mode:'inv',   title:'Book an Investment Consultation',     blurb:'Tell Vali what you are looking for and he will call you to discuss your goals. No automated sequences, no list rental.'},
+      'Commercial Investment Property': {mode:'inv',   title:'Discuss an Investment Property',      blurb:'Tell Vali what you have in mind and he will call you to talk it through.'},
+      'Buyer Consultation':             {mode:'buyer', title:'Book a Buyer Consultation',           blurb:'Tell Vali what you are looking for and he will call you to talk through your search. No property address needed.'}
     };
 
     function open(source) {
+      var cfg = MODES[source] || MODES['Investor Brief'];
       lastFocus = document.activeElement;
       if (srcField) srcField.value = source || 'Investor Brief';
-      if (title) title.textContent = TITLES[source] || 'Investor Enquiry';
+      if (title) title.textContent = cfg.title;
+
+      var eyebrow = modal.querySelector('.inv-head .eyebrow');
+      var blurb = modal.querySelector('.inv-head p');
+      if (eyebrow) eyebrow.textContent = cfg.mode === 'buyer' ? 'Buyer Enquiry' : 'Investor Enquiry';
+      if (blurb) blurb.textContent = cfg.blurb;
+
+      // Swap the field set and move `required` with it, so hidden inputs
+      // never block submission.
+      modal.querySelectorAll('.fld-buyer').forEach(function (el) {
+        var on = cfg.mode === 'buyer';
+        el.hidden = !on;
+        el.querySelectorAll('input, select, textarea').forEach(function (f) {
+          if (f.id === 'buyNotes') return;
+          if (on) { f.setAttribute('required', ''); } else { f.removeAttribute('required'); f.value = ''; }
+        });
+      });
+      modal.querySelectorAll('.fld-inv').forEach(function (el) {
+        var on = cfg.mode !== 'buyer';
+        el.hidden = !on;
+        el.querySelectorAll('input, select, textarea').forEach(function (f) {
+          if (on) { f.setAttribute('required', ''); } else { f.removeAttribute('required'); f.value = ''; }
+        });
+      });
+
       wrap.style.display = '';
       success.classList.remove('show');
       modal.classList.add('open');
@@ -3933,6 +4028,7 @@ document.querySelectorAll('.listing-filters button').forEach(b=>{
         var required = form.querySelectorAll('[required]');
         var missing = false;
         required.forEach(function (f) {
+          if (f.offsetParent === null) return;
           if (!f.value || !String(f.value).trim()) {
             f.style.borderColor = 'var(--rose)';
             missing = true;
@@ -3943,18 +4039,28 @@ document.querySelectorAll('.listing-filters button').forEach(b=>{
         if (missing) return;
 
         var LABELS = {
-          requested: 'Requested', name: 'Name', phone: 'Phone', email: 'Email',
+          requested: 'Button selected', name: 'Name', phone: 'Phone', email: 'Email',
           interest: 'Investment interest', location: 'Preferred location',
-          budget: 'Approximate budget', timeline: 'Buying timeline', calltime: 'Best time to call'
+          budget: 'Approximate budget', timeline: 'Buying timeline', calltime: 'Best time to call',
+          buytype: 'Property type wanted', buystage: 'Stage in the process',
+          buybeds: 'Bedrooms needed', buymove: 'Ideal move date',
+          buybudget: 'Approximate budget', buynotes: 'Notes'
         };
-        var lines = ['Investor enquiry from valimikho.com', ''];
-        ['requested','name','phone','email','interest','location','budget','timeline','calltime'].forEach(function (k) {
+        var src = srcField ? srcField.value : '';
+        var isBuyer = (MODES[src] || {}).mode === 'buyer';
+        var order = isBuyer
+          ? ['requested','name','phone','email','location','buytype','buystage','buybeds','buybudget','buymove','calltime','buynotes']
+          : ['requested','name','phone','email','interest','location','budget','timeline','calltime'];
+
+        var lines = [(isBuyer ? 'Buyer' : 'Investor') + ' enquiry from valimikho.com', ''];
+        order.forEach(function (k) {
           var f = form.querySelector('[name="' + k + '"]');
-          if (f && f.value) lines.push(LABELS[k] + ': ' + f.value);
+          if (f && f.value && String(f.value).trim()) lines.push(LABELS[k] + ': ' + f.value);
         });
+        lines.push('', 'Submitted: ' + new Date().toLocaleString('en-CA'));
 
         window.location.href = 'mailto:valimikho@gmail.com'
-          + '?subject=' + encodeURIComponent('Investor enquiry: ' + (srcField ? srcField.value : ''))
+          + '?subject=' + encodeURIComponent((isBuyer ? 'Buyer enquiry: ' : 'Investor enquiry: ') + src)
           + '&body=' + encodeURIComponent(lines.join('\n'));
 
         wrap.style.display = 'none';
